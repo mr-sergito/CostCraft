@@ -5,14 +5,13 @@ ProdCost is a tool to help entrepreneus and small businesses calculate productio
 1. Product cost calculation:
   - Add a new product and calculate the cost of producing one unit.
   - Allow users to input:
-    - Product name.
-    - Materials used:
-      - Name, quantity purchased, metric unit, price for that quantity.
-      - Quantity and metric unit consumed.
-    - Utility costs (e.g., time, water, light, gas, rent).
+    - Product name and units produced.
+    - Direct costs involved in production:
+      - Materials: Name, purchased quantity, its metric unit and price; and used quantity and its metric unit.
+      - Labor: Hourly rate and hours worked. 
   - Automatically calculate:
-    - Real price for one unit of the product.
-    - Sale price based on the desired profit percentage.
+    - Real price for one unit of the product and the total production.
+    - Sale prices based on the desired profit percentage.
 3. User account management:
   - Allow registered users to:
     - Save calculations.
