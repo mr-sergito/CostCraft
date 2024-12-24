@@ -1,21 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CostCraft.Api.Domain.Models
+namespace CostCraft.Api.Domain.Models;
+
+public class User
 {
-    public class User
-    {
-        [Key]
-        public int Id { get; set; }
+    [Key]
+    public Guid Id { get; set; }
 
-        [Required]
-        [StringLength(100)]
-        public string Name { get; set; } = string.Empty;
+    [Required]
+    [StringLength(100)]
+    public string Username { get; set; } = string.Empty;
 
-        [Required]
-        public string PasswordHash { get; set; } = string.Empty;
+    [Required]
+    public string PasswordHash { get; set; } = string.Empty;
 
-        public Currency UserCurrency { get; set; }
+    public Currency UserCurrency { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; } = [];
-    }
+    public virtual ICollection<Product> Products { get; set; } = [];
 }

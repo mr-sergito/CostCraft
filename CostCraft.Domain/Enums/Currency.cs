@@ -1,16 +1,15 @@
-﻿namespace CostCraft.Domain.Enums
+﻿namespace CostCraft.Domain.Enums;
+
+public enum Currency
 {
-    public enum Currency
-    {
-        USD,
-        EUR,
-        GBP,
-        JPY,
-        CAD,
-        AUD,
-        CHF,
-        CNY,
-        BRL,
-        MXN
-    }
+    USD,
+    EUR,
+    GBP,
+    JPY,
+    CAD,
+    AUD,
+    CHF,
+    CNY,
+    BRL,
+    MXN
 }

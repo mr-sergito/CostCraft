@@ -1,33 +1,32 @@
-﻿namespace CostCraft.Domain.Enums
+﻿namespace CostCraft.Domain.Enums;
+
+public enum MeasurementUnit
 {
-    public enum MeasurementUnit
-    {
-        // Mass
-        Milligram,
-        Gram,
-        Kilogram,
+    // Mass
+    Milligram,
+    Gram,
+    Kilogram,
 
-        // Volume
-        Milliliter,
-        Liter,
-        Teaspoon,
-        Tablespoon,
-        Cup,
+    // Volume
+    Milliliter,
+    Liter,
+    Teaspoon,
+    Tablespoon,
+    Cup,
 
-        // Length
-        Millimeter,
-        Centimeter,
-        Meter,
+    // Length
+    Millimeter,
+    Centimeter,
+    Meter,
 
-        // Area
-        SquareMeter,
+    // Area
+    SquareMeter,
 
-        // Count
-        Piece,
-        Dozen,
+    // Count
+    Piece,
+    Dozen,
 
-        // Time
-        Hour,
-        Day
-    }
+    // Time
+    Hour,
+    Day
 }

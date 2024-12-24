@@ -1,16 +1,15 @@
-﻿namespace CostCraft.Api.Domain.Models
+﻿namespace CostCraft.Api.Domain.Models;
+
+public enum Currency
 {
-    public enum Currency
-    {
-        USD,
-        EUR,
-        GBP,
-        JPY,
-        CAD,
-        AUD,
-        CHF,
-        CNY,
-        BRL,
-        MXN
-    }
+    USD,
+    EUR,
+    GBP,
+    JPY,
+    CAD,
+    AUD,
+    CHF,
+    CNY,
+    BRL,
+    MXN
 }

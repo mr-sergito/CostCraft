@@ -1,0 +1,11 @@
+﻿@CostCraft.Api_HostAddress = https://localhost:7287
+
+POST {{CostCraft.Api_HostAddress}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "sergito",
+  "password": "sergito123"
+}
+
+###

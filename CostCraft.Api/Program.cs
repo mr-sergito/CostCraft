@@ -1,13 +1,18 @@
 using CostCraft.Api.Infrastructure.Data;
+using CostCraft.Application;
+using CostCraft.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services
+    .AddApplication()
+    .AddInfrastructure()
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen()
+    .AddDbContext<CostCraftDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("CostCraftDb"))
+    );
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<CostCraftDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CostCraftDb"))
-);
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
