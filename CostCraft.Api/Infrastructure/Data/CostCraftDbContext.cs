@@ -5,11 +5,6 @@ namespace CostCraft.Api.Infrastructure.Data
 {
     public class CostCraftDbContext(DbContextOptions<CostCraftDbContext> options) : DbContext(options)
     {
-        public DbSet<User> Users { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Material> Materials { get; set; }
-        public DbSet<Labor> Labors { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -38,5 +33,10 @@ namespace CostCraft.Api.Infrastructure.Data
                 .Property(p => p.ProfitMarginPercentage)
                 .HasColumnType("decimal(18, 2)");
         }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Material> Materials { get; set; }
+        public DbSet<Labor> Labors { get; set; }
     }
 }

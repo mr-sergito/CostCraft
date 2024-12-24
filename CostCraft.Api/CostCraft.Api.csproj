@@ -24,10 +24,15 @@
   <ItemGroup>
     <Folder Include="Application\Commands\" />
     <Folder Include="Application\Queries\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Domain\Services\" />
     <Folder Include="Infrastructure\Repositories\" />
     <Folder Include="Web\Helpers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CostCraft.Application\CostCraft.Application.csproj" />
+    <ProjectReference Include="..\CostCraft.Contracts\CostCraft.Contracts.csproj" />
+    <ProjectReference Include="..\CostCraft.Infrastructure\CostCraft.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
