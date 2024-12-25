@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddApplication()
-    .AddInfrastructure()
+    .AddInfrastructure(builder.Configuration)
     .AddEndpointsApiExplorer()
     .AddSwaggerGen()
     .AddDbContext<CostCraftDbContext>(options =>

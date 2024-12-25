@@ -1,11 +1,20 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CostCraft.Application.Common.Interfaces.Authentication;
+using CostCraft.Application.Common.Interfaces.Services;
+using CostCraft.Infrastructure.Authentication;
+using CostCraft.Infrastructure.Services;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CostCraft.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
     {
-        return services;
+        services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
+
+        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+        services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+        return services;    
     }
 }
