@@ -1,6 +1,7 @@
-﻿namespace CostCraft.Application.Services.Authentication;
+﻿using CostCraft.Domain.Entities;
+
+namespace CostCraft.Application.Services.Authentication;
 
 public record AuthenticationResult(
-    Guid Id,
-    string Username,
+    User User,
     string Token);

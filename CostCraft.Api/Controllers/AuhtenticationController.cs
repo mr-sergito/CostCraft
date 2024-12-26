@@ -21,8 +21,8 @@ public class AuhtenticationController : ControllerBase
         var authResult = _authenticationService.Register(request.Username, request.Password);
 
         var response = new AuthenticationResponse(
-            authResult.Id,
-            authResult.Username,
+            authResult.User.Id,
+            authResult.User.Username,
             authResult.Token);
 
         return Ok(response);
@@ -34,8 +34,8 @@ public class AuhtenticationController : ControllerBase
         var authResult = _authenticationService.Login(request.Username, request.Password);
 
         var response = new AuthenticationResponse(
-            authResult.Id,
-            authResult.Username,
+            authResult.User.Id,
+            authResult.User.Username,
             authResult.Token);
 
         return Ok(response);

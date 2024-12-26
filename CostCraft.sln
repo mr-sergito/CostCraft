@@ -13,13 +13,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CostCraft.Domain", "CostCraft.Domain\CostCraft.Domain.csproj", "{D816008D-FEDD-4D04-A49F-FFFCC9C04370}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CostCraft.Domain", "CostCraft.Domain\CostCraft.Domain.csproj", "{D816008D-FEDD-4D04-A49F-FFFCC9C04370}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CostCraft.Application", "CostCraft.Application\CostCraft.Application.csproj", "{3E0D2981-6604-4AD4-A50F-4F9F93668C3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CostCraft.Application", "CostCraft.Application\CostCraft.Application.csproj", "{3E0D2981-6604-4AD4-A50F-4F9F93668C3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CostCraft.Infrastructure", "CostCraft.Infrastructure\CostCraft.Infrastructure.csproj", "{E501A0AF-A7C6-4797-96EF-07E8CF64857A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CostCraft.Infrastructure", "CostCraft.Infrastructure\CostCraft.Infrastructure.csproj", "{E501A0AF-A7C6-4797-96EF-07E8CF64857A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CostCraft.Contracts", "CostCraft.Contracts\CostCraft.Contracts.csproj", "{47D580C1-95A6-4A48-9613-1F794837ED54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CostCraft.Contracts", "CostCraft.Contracts\CostCraft.Contracts.csproj", "{47D580C1-95A6-4A48-9613-1F794837ED54}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{E4A9AE1E-CD46-4364-B4F8-316752AD53CA}"
+	ProjectSection(SolutionItems) = preProject
+		DomainModels.md = DomainModels.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

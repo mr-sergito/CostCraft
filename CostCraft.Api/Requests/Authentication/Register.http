@@ -4,8 +4,8 @@ POST {{CostCraft.Api_HostAddress}}/auth/register
 Content-Type: application/json
 
 {
-  "username": "sergito",
-  "password": "sergito123"
+  "username": "mr-sergito",
+  "password": "mr-sergito123"
 }
 
 ###

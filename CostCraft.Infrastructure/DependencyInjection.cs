@@ -1,6 +1,8 @@
 ﻿using CostCraft.Application.Common.Interfaces.Authentication;
+using CostCraft.Application.Common.Interfaces.Persistence;
 using CostCraft.Application.Common.Interfaces.Services;
 using CostCraft.Infrastructure.Authentication;
+using CostCraft.Infrastructure.Persistence;
 using CostCraft.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,9 @@ public static class DependencyInjection
 
         services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+
+        services.AddScoped<IUserRepository, UserRepository>();
+
         return services;    
     }
 }
