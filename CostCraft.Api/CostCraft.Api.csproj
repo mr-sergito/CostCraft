@@ -25,7 +25,6 @@
     <Folder Include="Application\Queries\" />
     <Folder Include="Domain\Services\" />
     <Folder Include="Infrastructure\Repositories\" />
-    <Folder Include="NewFolder\" />
     <Folder Include="Web\Helpers\" />
   </ItemGroup>
 

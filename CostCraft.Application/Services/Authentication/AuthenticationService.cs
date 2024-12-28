@@ -1,4 +1,5 @@
-﻿using CostCraft.Application.Common.Interfaces.Authentication;
+﻿using CostCraft.Application.Common.Errors;
+using CostCraft.Application.Common.Interfaces.Authentication;
 using CostCraft.Application.Common.Interfaces.Persistence;
 using CostCraft.Domain.Entities;
 
@@ -40,7 +41,7 @@ public class AuthenticationService : IAuthenticationService
         // Validate the user doesn't exist
         if (_userRepository.GetUserByUsername(username) is not null)
         {
-            throw new Exception("User with given username already exists.");
+            throw new DuplicateUsernameException();
         }
 
         // Create user (generate unique ID) & Persist to DB
