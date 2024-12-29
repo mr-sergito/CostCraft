@@ -1,22 +1,21 @@
-﻿using CostCraft.Application.Common.Errors;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿//using Microsoft.AspNetCore.Diagnostics;
+//using Microsoft.AspNetCore.Mvc;
 
-namespace CostCraft.Api.Controllers;
+//namespace CostCraft.Api.Controllers;
 
-public class ErrorsController : ControllerBase
-{
-    [Route("/error")]
-    public IActionResult Error()
-    {
-        Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
+//public class ErrorsController : ApiController
+//{
+//    [Route("/error")]
+//    public IActionResult Error()
+//    {
+//        Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
 
-        var (statusCode, message) = exception switch
-        {
-            DuplicateUsernameException => (StatusCodes.Status409Conflict, "Username already exists."),
-            _ => (StatusCodes.Status500InternalServerError, "An unexpected error occurred."),
-        };
+//        var (statusCode, message) = exception switch
+//        {
+//            IError serviceException => ((int)serviceException.StatusCode, serviceException.ErrorMessage),
+//            _ => (StatusCodes.Status500InternalServerError, "An unexpected error occurred."),
+//        };
 
-        return Problem(statusCode: statusCode, title: message);
-    }
-}
+//        return Problem(statusCode: statusCode, title: message);
+//    }
+//}

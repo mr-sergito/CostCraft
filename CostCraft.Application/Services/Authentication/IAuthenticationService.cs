@@ -1,7 +1,9 @@
-﻿namespace CostCraft.Application.Services.Authentication;
+﻿using ErrorOr;
+
+namespace CostCraft.Application.Services.Authentication;
 
 public interface IAuthenticationService
 {
-    AuthenticationResult Login(string username, string password);
-    AuthenticationResult Register(string username, string password);
+    ErrorOr<AuthenticationResult> Register(string username, string password);
+    ErrorOr<AuthenticationResult> Login(string username, string password);
 }

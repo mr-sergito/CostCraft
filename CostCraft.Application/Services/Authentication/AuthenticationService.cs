@@ -1,7 +1,8 @@
-﻿using CostCraft.Application.Common.Errors;
-using CostCraft.Application.Common.Interfaces.Authentication;
+﻿using CostCraft.Application.Common.Interfaces.Authentication;
 using CostCraft.Application.Common.Interfaces.Persistence;
+using CostCraft.Domain.Common.Errors;
 using CostCraft.Domain.Entities;
+using ErrorOr;
 
 namespace CostCraft.Application.Services.Authentication;
 
@@ -16,32 +17,12 @@ public class AuthenticationService : IAuthenticationService
         _userRepository = userRepository;
     }
 
-    public AuthenticationResult Login(string username, string password)
-    {
-        // Validate the user exists
-        if (_userRepository.GetUserByUsername(username) is not User user)
-        {
-            throw new Exception("User with given username does not exist.");
-        }
-
-        // Validate the password is correct
-        if (user.Password != password)
-        {
-            throw new Exception("Invalid password");
-        }
-
-        // Create JWT token
-        var token = _jwtTokenGenerator.GenerateToken(user);
-        
-        return new AuthenticationResult(user, token);
-    }
-
-    public AuthenticationResult Register(string username, string password)
+    public ErrorOr<AuthenticationResult> Register(string username, string password)
     {
         // Validate the user doesn't exist
         if (_userRepository.GetUserByUsername(username) is not null)
         {
-            throw new DuplicateUsernameException();
+            return Errors.User.DuplicateUsername;
         }
 
         // Create user (generate unique ID) & Persist to DB
@@ -52,6 +33,26 @@ public class AuthenticationService : IAuthenticationService
         };
 
         _userRepository.Add(user);
+
+        // Create JWT token
+        var token = _jwtTokenGenerator.GenerateToken(user);
+
+        return new AuthenticationResult(user, token);
+    }
+
+    public ErrorOr<AuthenticationResult> Login(string username, string password)
+    {
+        // Validate the user exists
+        if (_userRepository.GetUserByUsername(username) is not User user)
+        {
+            return new[] { Errors.Authentication.InvalidCredentials };
+        }
+
+        // Validate the password is correct
+        if (user.Password != password)
+        {
+            return new[] { Errors.Authentication.InvalidCredentials };
+        }
 
         // Create JWT token
         var token = _jwtTokenGenerator.GenerateToken(user);

@@ -1,12 +1,13 @@
 ﻿using CostCraft.Application.Services.Authentication;
 using CostCraft.Contracts.Authentication;
+using CostCraft.Domain.Common.Errors;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CostCraft.Api.Controllers;
 
-[ApiController]
 [Route("auth")]
-public class AuhtenticationController : ControllerBase
+public class AuhtenticationController : ApiController
 {
     private readonly IAuthenticationService _authenticationService;
 
@@ -18,26 +19,33 @@ public class AuhtenticationController : ControllerBase
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        var authResult = _authenticationService.Register(request.Username, request.Password);
+        ErrorOr<AuthenticationResult> authResult = _authenticationService.Register(request.Username, request.Password);
 
-        var response = new AuthenticationResponse(
+        return authResult.Match(
+            authResult => Ok(MapAuthResult(authResult)),
+            errors => Problem(errors));
+    }
+
+    private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
+    {
+        return new AuthenticationResponse(
             authResult.User.Id,
             authResult.User.Username,
             authResult.Token);
-
-        return Ok(response);
     }
 
     [HttpPost("login")]
     public IActionResult Login(LoginRequest request)
     {
-        var authResult = _authenticationService.Login(request.Username, request.Password);
+        ErrorOr<AuthenticationResult> authResult = _authenticationService.Register(request.Username, request.Password);
 
-        var response = new AuthenticationResponse(
-            authResult.User.Id,
-            authResult.User.Username,
-            authResult.Token);
+        if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
+        {
+            return Problem(statusCode: StatusCodes.Status401Unauthorized, title: authResult.FirstError.Description);
+        }
 
-        return Ok(response);
+        return authResult.Match(
+            authResult => Ok(MapAuthResult(authResult)),
+            errors => Problem(errors));
     }
 }
