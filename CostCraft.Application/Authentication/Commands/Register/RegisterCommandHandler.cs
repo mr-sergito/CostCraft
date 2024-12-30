@@ -1,27 +1,31 @@
 ﻿using CostCraft.Application.Common.Interfaces.Authentication;
 using CostCraft.Application.Common.Interfaces.Persistence;
-using CostCraft.Application.Services.Authentication.Common;
+using CostCraft.Application.Authentication.Common;
 using CostCraft.Domain.Common.Errors;
 using CostCraft.Domain.Entities;
 using ErrorOr;
+using MediatR;
 
-namespace CostCraft.Application.Services.Authentication.Commands;
+namespace CostCraft.Application.Authentication.Commands.Register;
 
-public class AuthenticationCommandService : IAuthenticationCommandService
+public class RegisterCommandHandler :
+    IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
 
-    public AuthenticationCommandService(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository)
+    public RegisterCommandHandler(
+        IJwtTokenGenerator jwtTokenGenerator, 
+        IUserRepository userRepository)
     {
         _jwtTokenGenerator = jwtTokenGenerator;
         _userRepository = userRepository;
     }
 
-    public ErrorOr<AuthenticationResult> Register(string username, string password)
+    public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
         // Validate the user doesn't exist
-        if (_userRepository.GetUserByUsername(username) is not null)
+        if (_userRepository.GetUserByUsername(command.Username) is not null)
         {
             return Errors.User.DuplicateUsername;
         }
@@ -29,8 +33,8 @@ public class AuthenticationCommandService : IAuthenticationCommandService
         // Create user (generate unique ID) & Persist to DB
         var user = new User
         {
-            Username = username,
-            Password = password,
+            Username = command.Username,
+            Password = command.Password,
         };
 
         _userRepository.Add(user);

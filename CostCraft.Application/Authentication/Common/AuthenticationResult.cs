@@ -1,6 +1,6 @@
 ﻿using CostCraft.Domain.Entities;
 
-namespace CostCraft.Application.Services.Authentication.Common;
+namespace CostCraft.Application.Authentication.Common;
 
 public record AuthenticationResult(
     User User,

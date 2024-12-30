@@ -1,33 +1,37 @@
 ﻿using CostCraft.Application.Common.Interfaces.Authentication;
 using CostCraft.Application.Common.Interfaces.Persistence;
-using CostCraft.Application.Services.Authentication.Common;
+using CostCraft.Application.Authentication.Common;
 using CostCraft.Domain.Common.Errors;
 using CostCraft.Domain.Entities;
 using ErrorOr;
+using MediatR;
 
-namespace CostCraft.Application.Services.Authentication.Queries;
+namespace CostCraft.Application.Authentication.Queries.Login;
 
-public class AuthenticationQueryService : IAuthenticationQueryService
+public class LoginQueryHandler :
+    IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
 
-    public AuthenticationQueryService(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository)
+    public LoginQueryHandler(
+        IJwtTokenGenerator jwtTokenGenerator,
+        IUserRepository userRepository)
     {
         _jwtTokenGenerator = jwtTokenGenerator;
         _userRepository = userRepository;
     }
 
-    public ErrorOr<AuthenticationResult> Login(string username, string password)
+    public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
         // Validate the user exists
-        if (_userRepository.GetUserByUsername(username) is not User user)
+        if (_userRepository.GetUserByUsername(query.Username) is not User user)
         {
             return new[] { Errors.Authentication.InvalidCredentials };
         }
 
         // Validate the password is correct
-        if (user.Password != password)
+        if (user.Password != query.Password)
         {
             return new[] { Errors.Authentication.InvalidCredentials };
         }

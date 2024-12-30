@@ -1,9 +1,10 @@
-﻿using CostCraft.Application.Services.Authentication.Commands;
-using CostCraft.Application.Services.Authentication.Common;
-using CostCraft.Application.Services.Authentication.Queries;
+﻿using CostCraft.Application.Authentication.Commands.Register;
+using CostCraft.Application.Authentication.Common;
+using CostCraft.Application.Authentication.Queries.Login;
 using CostCraft.Contracts.Authentication;
 using CostCraft.Domain.Common.Errors;
 using ErrorOr;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CostCraft.Api.Controllers;
@@ -11,23 +12,18 @@ namespace CostCraft.Api.Controllers;
 [Route("auth")]
 public class AuhtenticationController : ApiController
 {
-    private readonly IAuthenticationCommandService _authenticationCommandService;
-    private readonly IAuthenticationQueryService _authenticationQueryService;
+    private readonly ISender _sender;
 
-    public AuhtenticationController(
-        IAuthenticationCommandService authenticationCommandService, 
-        IAuthenticationQueryService authenticationQueryService)
+    public AuhtenticationController(ISender sender)
     {
-        _authenticationCommandService = authenticationCommandService;
-        _authenticationQueryService = authenticationQueryService;
+        _sender = sender;
     }
 
     [HttpPost("register")]
-    public IActionResult Register(RegisterRequest request)
+    public async Task<IActionResult> RegisterAsync(RegisterRequest request)
     {
-        ErrorOr<AuthenticationResult> authResult = _authenticationCommandService.Register(
-            request.Username, 
-            request.Password);
+        var command = new RegisterCommand(request.Username, request.Password);
+        ErrorOr<AuthenticationResult> authResult = await _sender.Send(command);
 
         return authResult.Match(
             authResult => Ok(MapAuthResult(authResult)),
@@ -35,11 +31,10 @@ public class AuhtenticationController : ApiController
     }
 
     [HttpPost("login")]
-    public IActionResult Login(LoginRequest request)
+    public async Task<IActionResult> LoginAsync(LoginRequest request)
     {
-        ErrorOr<AuthenticationResult> authResult = _authenticationQueryService.Login(
-            request.Username, 
-            request.Password);
+        var query = new LoginQuery(request.Username, request.Password);
+        ErrorOr<AuthenticationResult> authResult = await _sender.Send(query);
 
         if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
         {
