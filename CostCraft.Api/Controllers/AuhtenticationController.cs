@@ -1,4 +1,6 @@
-﻿using CostCraft.Application.Services.Authentication;
+﻿using CostCraft.Application.Services.Authentication.Commands;
+using CostCraft.Application.Services.Authentication.Common;
+using CostCraft.Application.Services.Authentication.Queries;
 using CostCraft.Contracts.Authentication;
 using CostCraft.Domain.Common.Errors;
 using ErrorOr;
@@ -9,17 +11,42 @@ namespace CostCraft.Api.Controllers;
 [Route("auth")]
 public class AuhtenticationController : ApiController
 {
-    private readonly IAuthenticationService _authenticationService;
+    private readonly IAuthenticationCommandService _authenticationCommandService;
+    private readonly IAuthenticationQueryService _authenticationQueryService;
 
-    public AuhtenticationController(IAuthenticationService authenticationService)
+    public AuhtenticationController(
+        IAuthenticationCommandService authenticationCommandService, 
+        IAuthenticationQueryService authenticationQueryService)
     {
-        _authenticationService = authenticationService;
+        _authenticationCommandService = authenticationCommandService;
+        _authenticationQueryService = authenticationQueryService;
     }
 
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        ErrorOr<AuthenticationResult> authResult = _authenticationService.Register(request.Username, request.Password);
+        ErrorOr<AuthenticationResult> authResult = _authenticationCommandService.Register(
+            request.Username, 
+            request.Password);
+
+        return authResult.Match(
+            authResult => Ok(MapAuthResult(authResult)),
+            errors => Problem(errors));
+    }
+
+    [HttpPost("login")]
+    public IActionResult Login(LoginRequest request)
+    {
+        ErrorOr<AuthenticationResult> authResult = _authenticationQueryService.Login(
+            request.Username, 
+            request.Password);
+
+        if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
+        {
+            return Problem(
+                statusCode: StatusCodes.Status401Unauthorized, 
+                title: authResult.FirstError.Description);
+        }
 
         return authResult.Match(
             authResult => Ok(MapAuthResult(authResult)),
@@ -32,20 +59,5 @@ public class AuhtenticationController : ApiController
             authResult.User.Id,
             authResult.User.Username,
             authResult.Token);
-    }
-
-    [HttpPost("login")]
-    public IActionResult Login(LoginRequest request)
-    {
-        ErrorOr<AuthenticationResult> authResult = _authenticationService.Register(request.Username, request.Password);
-
-        if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
-        {
-            return Problem(statusCode: StatusCodes.Status401Unauthorized, title: authResult.FirstError.Description);
-        }
-
-        return authResult.Match(
-            authResult => Ok(MapAuthResult(authResult)),
-            errors => Problem(errors));
     }
 }
