@@ -1,21 +1,12 @@
-using CostCraft.Api.Common.Errors;
-using CostCraft.Api.Infrastructure.Data;
+using CostCraft.Api;
 using CostCraft.Application;
 using CostCraft.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services
+    .AddPresentation()
     .AddApplication()
-    .AddInfrastructure(builder.Configuration)
-    .AddEndpointsApiExplorer()
-    .AddSwaggerGen()
-    .AddDbContext<CostCraftDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("CostCraftDb"))
-    );
-builder.Services.AddControllers();
-builder.Services.AddSingleton<ProblemDetailsFactory, CostCraftProblemDetailsFactory>();
+    .AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())

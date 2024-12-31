@@ -4,6 +4,7 @@ using CostCraft.Application.Authentication.Queries.Login;
 using CostCraft.Contracts.Authentication;
 using CostCraft.Domain.Common.Errors;
 using ErrorOr;
+using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,29 +13,31 @@ namespace CostCraft.Api.Controllers;
 [Route("auth")]
 public class AuhtenticationController : ApiController
 {
-    private readonly ISender _sender;
+    private readonly ISender _mediator;
+    private readonly IMapper _mapper;
 
-    public AuhtenticationController(ISender sender)
+    public AuhtenticationController(ISender mediator, IMapper mapper)
     {
-        _sender = sender;
+        _mediator = mediator;
+        _mapper = mapper;
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> RegisterAsync(RegisterRequest request)
     {
-        var command = new RegisterCommand(request.Username, request.Password);
-        ErrorOr<AuthenticationResult> authResult = await _sender.Send(command);
+        var command = _mapper.Map<RegisterCommand>(request);
+        ErrorOr<AuthenticationResult> authResult = await _mediator.Send(command);
 
         return authResult.Match(
-            authResult => Ok(MapAuthResult(authResult)),
+            authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
             errors => Problem(errors));
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> LoginAsync(LoginRequest request)
     {
-        var query = new LoginQuery(request.Username, request.Password);
-        ErrorOr<AuthenticationResult> authResult = await _sender.Send(query);
+        var query = _mapper.Map<LoginQuery>(request);
+        ErrorOr<AuthenticationResult> authResult = await _mediator.Send(query);
 
         if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
         {
@@ -44,15 +47,7 @@ public class AuhtenticationController : ApiController
         }
 
         return authResult.Match(
-            authResult => Ok(MapAuthResult(authResult)),
+            authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
             errors => Problem(errors));
-    }
-
-    private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
-    {
-        return new AuthenticationResponse(
-            authResult.User.Id,
-            authResult.User.Username,
-            authResult.Token);
     }
 }
