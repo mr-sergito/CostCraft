@@ -9,3 +9,23 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{CostCraft.Api_HostAddress}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "",
+  "password": ""
+}
+
+###
+
+POST {{CostCraft.Api_HostAddress}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "mr-sergito",
+  "password": null
+}
+
+###
