@@ -1,0 +1,7 @@
+﻿@CostCraft.Api_HostAddress = https://localhost:7287
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0M2FhMGZhZS05ZTI5LTQxYzEtYjI2My0wYjU2M2Q4NjFjN2QiLCJ1bmlxdWVfbmFtZSI6Im1yLXNlcmdpdG8iLCJqdGkiOiIyYTY0OTlmOC04ZTRlLTRiZDctODZiZC1lZTAwNTY5YzMzZjEiLCJleHAiOjE3MzU4MjI0MjEsImlzcyI6IkNvc3RDcmFmdCIsImF1ZCI6IkNvc3RDcmFmdCJ9.lyMtoVUjPTLf1mgiT_0z1TAFlaoGByRcvyt8uF3pkuY
+
+GET {{CostCraft.Api_HostAddress}}/products
+Authorization: Bearer {{token}}
+
+###

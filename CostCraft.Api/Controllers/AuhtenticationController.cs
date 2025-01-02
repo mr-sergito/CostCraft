@@ -6,11 +6,13 @@ using CostCraft.Domain.Common.Errors;
 using ErrorOr;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CostCraft.Api.Controllers;
 
 [Route("auth")]
+[AllowAnonymous]
 public class AuhtenticationController : ApiController
 {
     private readonly ISender _mediator;
