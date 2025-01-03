@@ -27,5 +27,5 @@ public class Product
     public virtual User User { get; set; } = null!;
 
     public virtual ICollection<Material> Materials { get; set; } = [];
-    public virtual ICollection<Labor> LaborEntries { get; set; } = [];
+    public virtual ICollection<Labor> Labors { get; set; } = [];
 }

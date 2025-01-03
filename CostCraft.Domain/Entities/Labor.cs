@@ -8,15 +8,15 @@ public class Labor
     public Guid Id { get; set; }
 
     [Required]
+    public MeasurementUnit TimeUnit { get; set; }
+
+    [Required]
     [Range(0.01, double.MaxValue)]
     public decimal TimePayRate { get; set; }
 
     [Required]
     [Range(0.01, double.MaxValue)]
     public decimal TimeWorked { get; set; }
-
-    [Required]
-    public MeasurementUnit TimeUnit { get; set; }
 
     [Required]
     public int ProductId { get; set; }

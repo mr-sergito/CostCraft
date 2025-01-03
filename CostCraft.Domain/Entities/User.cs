@@ -14,7 +14,7 @@ public class User
     [Required]
     public string Password { get; set; } = null!;
 
-    public Currency UserCurrency { get; set; } = Currency.EUR;
+    public Currency PreferredCurrency { get; set; } = Currency.EUR;
 
     public virtual ICollection<Product> Products { get; set; } = [];
 }
