@@ -32,7 +32,7 @@ accurate and user-friendly way to calculate product costs.
     - Register user.
     - Authenticate user.
     - Update user profile.
-
+    
 **Cost Calculation Context**
 
 - Product (Aggregate Root)
