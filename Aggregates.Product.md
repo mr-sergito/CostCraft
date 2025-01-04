@@ -21,16 +21,16 @@ class Product
 
 ```json
 {
-	"id": "00000000-0000-0000-0000-000000000000",
+	"id": { "value": "00000000-0000-0000-0000-000000000000" },
 	"name": "Cake",
 	"unitsProduced": 1,
+	"userId": { "value": "00000000-0000-0000-0000-000000000000" },
 	"createdAt": "2025-01-01T12:00:00Z",
 	"updatedAt": "2025-01-02T12:00:00Z",
 	"profitMarginPercentage": 200,
-	"userId": "00000000-0000-0000-0000-000000000000",
 	"materials": [
 		{
-			"id": "11111111-1111-1111-1111-111111111111",
+			"id": { "value": "00000000-0000-0000-0000-000000000000" },
 			"name": "Flour",
 			"purchasedQuantity": 1,
 			"purchasedUnit": "kg",
@@ -42,9 +42,9 @@ class Product
 	],
 	"labors": [
 		{
-			"id": "22222222-2222-2222-2222-222222222222",
+			"id": { "value": "00000000-0000-0000-0000-000000000000" },
 			"timeUnit": "hour",
-			"timeRate": 10.00,
+			"timePayRate": 10.00,
 			"timeWorked": 2,
 			"timeCost": 20.00
 		}

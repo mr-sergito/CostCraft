@@ -1,6 +1,6 @@
 ﻿using CostCraft.Application.Common.Interfaces.Authentication;
 using CostCraft.Application.Common.Interfaces.Services;
-using CostCraft.Domain.Entities;
+using CostCraft.Domain.User;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

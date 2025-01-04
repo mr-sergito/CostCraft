@@ -1,4 +1,4 @@
-﻿using CostCraft.Domain.Entities;
+﻿using CostCraft.Domain.User;
 
 namespace CostCraft.Application.Common.Interfaces.Authentication;
 

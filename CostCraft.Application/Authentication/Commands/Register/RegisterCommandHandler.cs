@@ -2,9 +2,9 @@
 using CostCraft.Application.Common.Interfaces.Persistence;
 using CostCraft.Application.Authentication.Common;
 using CostCraft.Domain.Common.Errors;
-using CostCraft.Domain.Entities;
 using ErrorOr;
 using MediatR;
+using CostCraft.Domain.User;
 
 namespace CostCraft.Application.Authentication.Commands.Register;
 

@@ -1,5 +1,6 @@
 ﻿using CostCraft.Application.Common.Interfaces.Persistence;
-using CostCraft.Domain.Entities;
+using CostCraft.Domain.User;
+using CostCraft.Domain.User.ValueObjects;
 
 namespace CostCraft.Infrastructure.Persistence;
 
@@ -12,7 +13,7 @@ public class UserRepository : IUserRepository
         _users.Add(user);
     }
 
-    public User? GetUserById(Guid id)
+    public User? GetUserById(UserId id)
     {
         return _users.SingleOrDefault(u => u.Id == id);
     }
