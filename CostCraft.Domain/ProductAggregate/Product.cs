@@ -10,18 +10,18 @@ public class Product : AggregateRoot<ProductId>
     private readonly List<Material> _materials = [];
     private readonly List<Labor> _labors = [];
 
-    public string Name { get; }
-    public int UnitsProduced { get; }
-    public UserId UserId { get; }
-    public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
-    public decimal ProfitMarginPercentage { get; }
+    public string Name { get; private set; }
+    public int UnitsProduced { get; private set; }
+    public UserId UserId { get; private set; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
+    public decimal ProfitMarginPercentage { get; private set; }
 
     public IReadOnlyList<Material> Materials => _materials.AsReadOnly();
     public IReadOnlyList<Labor> Labors => _labors.AsReadOnly();
 
-    public decimal TotalCost { get; }
-    public decimal SalePrice { get; }
+    public decimal TotalCost { get; private set; }
+    public decimal SalePrice { get; private set; }
 
     private Product(
         ProductId productId,
@@ -68,4 +68,11 @@ public class Product : AggregateRoot<ProductId>
             materials,
             labors);
     }
+
+#pragma warning disable CS8618
+    private Product()
+    {
+
+    }
+#pragma warning restore CS8618
 }

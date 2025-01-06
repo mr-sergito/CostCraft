@@ -6,13 +6,13 @@ namespace CostCraft.Domain.ProductAggregate.Entities;
 
 public sealed class Material : Entity<MaterialId>
 {
-    public string Name { get; }
-    public decimal PurchasedAmount { get; }
-    public MeasurementUnit PurchasedUnit { get; }
-    public decimal PurchasedPrice { get; }
-    public decimal UsedAmount { get; }
-    public MeasurementUnit UsedUnit { get; }
-    public decimal UsedCost { get; }
+    public string Name { get; private set; }
+    public decimal PurchasedAmount { get; private set; }
+    public MeasurementUnit PurchasedUnit { get; private set; }
+    public decimal PurchasedPrice { get; private set; }
+    public decimal UsedAmount { get; private set; }
+    public MeasurementUnit UsedUnit { get; private set; }
+    public decimal UsedCost { get; private set; }
 
     private Material(
         MaterialId materialId,
@@ -51,4 +51,11 @@ public sealed class Material : Entity<MaterialId>
             usedAmount,
             usedUnit);
     }
+
+#pragma warning disable CS8618
+    private Material()
+    {
+
+    }
+#pragma warning restore CS8618
 }

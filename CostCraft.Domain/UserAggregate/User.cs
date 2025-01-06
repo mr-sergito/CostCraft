@@ -9,11 +9,11 @@ public sealed class User : AggregateRoot<UserId>
 {
     private readonly List<ProductId> _productIds = [];
 
-    public string Username { get; }
-    public string Password { get; }
-    public Currency PreferredCurrency { get; }
-    public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
+    public string Username { get; private set; }
+    public string Password { get; private set; }
+    public Currency PreferredCurrency { get; private set; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
 
     public IReadOnlyList<ProductId> ProductIds => _productIds.AsReadOnly();
 
@@ -46,4 +46,11 @@ public sealed class User : AggregateRoot<UserId>
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
+
+#pragma warning disable CS8618
+    private User()
+    {
+
+    }
+#pragma warning restore CS8618
 }

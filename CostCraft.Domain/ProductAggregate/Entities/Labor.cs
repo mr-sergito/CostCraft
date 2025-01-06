@@ -6,10 +6,10 @@ namespace CostCraft.Domain.ProductAggregate.Entities;
 
 public sealed class Labor : Entity<LaborId>
 {
-    public MeasurementUnit TimeUnit { get; }
-    public decimal TimePayRate { get; }
-    public decimal TimeWorked { get; }
-    public decimal TimeCost { get; } // Not setteable, not sure if this belongs here
+    public MeasurementUnit TimeUnit { get; private set; }
+    public decimal TimePayRate { get; private set; }
+    public decimal TimeWorked { get; private set; }
+    public decimal TimeCost { get; private set; } // Not setteable, not sure if this belongs here
 
     private Labor(
         LaborId laborId,
@@ -36,4 +36,11 @@ public sealed class Labor : Entity<LaborId>
             timePayRate,
             timeWorked);
     }
+
+#pragma warning disable CS8618
+    private Labor()
+    {
+
+    }
+#pragma warning restore CS8618
 }

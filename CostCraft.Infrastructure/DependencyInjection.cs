@@ -4,8 +4,10 @@ using CostCraft.Application.Common.Interfaces.Persistence;
 using CostCraft.Application.Common.Interfaces.Services;
 using CostCraft.Infrastructure.Authentication;
 using CostCraft.Infrastructure.Persistence;
+using CostCraft.Infrastructure.Persistence.Repositories;
 using CostCraft.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -26,6 +28,8 @@ public static class DependencyInjection
 
     public static IServiceCollection AddPersistence(this IServiceCollection services)
     {
+        services.AddDbContext<CostCraftDbCcontext>(options => options.UseSqlServer());
+
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IProductRepository, ProductRepository>();
 

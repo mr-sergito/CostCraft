@@ -4,11 +4,16 @@ namespace CostCraft.Domain.UserAggregate.ValueObjects;
 
 public sealed class UserId : ValueObject
 {
-    public Guid Value { get; }
+    public Guid Value { get; private set; }
 
     private UserId(Guid value)
     {
         Value = value;
+    }
+
+    public static UserId CreateUnique()
+    {
+        return new UserId(Guid.NewGuid());
     }
 
     public static UserId CreateFromString(string value)
@@ -21,9 +26,10 @@ public sealed class UserId : ValueObject
         throw new ArgumentException("Invalid GUID format.", nameof(value)); // Should it be a problem?
     }
 
-    public static UserId CreateUnique()
+    public static UserId CreateFromGuid(Guid value)
     {
-        return new UserId(Guid.NewGuid());
+        // TODO: enforce invariants
+        return new UserId(value);
     }
 
     public override IEnumerable<object> GetEqualityComponents()
