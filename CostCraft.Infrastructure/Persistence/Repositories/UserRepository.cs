@@ -16,6 +16,7 @@ public class UserRepository : IUserRepository
     public void Add(User user)
     {
         _dbCcontext.Add(user);
+        _dbCcontext.SaveChanges();
     }
 
     public User? GetUserById(UserId id)

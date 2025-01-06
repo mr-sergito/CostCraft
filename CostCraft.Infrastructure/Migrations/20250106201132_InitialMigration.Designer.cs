@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CostCraft.Infrastructure.Migrations
 {
     [DbContext(typeof(CostCraftDbCcontext))]
-    [Migration("20250106192858_SpecifiedPrecision")]
-    partial class SpecifiedPrecision
+    [Migration("20250106201132_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,7 +61,7 @@ namespace CostCraft.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Produts", (string)null);
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("CostCraft.Domain.UserAggregate.User", b =>
@@ -74,10 +74,12 @@ namespace CostCraft.Infrastructure.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("PreferredCurrency")
-                        .HasColumnType("int");
+                    b.Property<string>("PreferredCurrency")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -110,8 +112,9 @@ namespace CostCraft.Infrastructure.Migrations
                                 .HasPrecision(18, 2)
                                 .HasColumnType("decimal(18,2)");
 
-                            b1.Property<int>("TimeUnit")
-                                .HasColumnType("int");
+                            b1.Property<string>("TimeUnit")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<decimal>("TimeWorked")
                                 .HasPrecision(18, 2)
@@ -148,8 +151,9 @@ namespace CostCraft.Infrastructure.Migrations
                                 .HasPrecision(18, 2)
                                 .HasColumnType("decimal(18,2)");
 
-                            b1.Property<int>("PurchasedUnit")
-                                .HasColumnType("int");
+                            b1.Property<string>("PurchasedUnit")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<decimal>("UsedAmount")
                                 .HasPrecision(18, 2)
@@ -159,8 +163,9 @@ namespace CostCraft.Infrastructure.Migrations
                                 .HasPrecision(18, 2)
                                 .HasColumnType("decimal(18,2)");
 
-                            b1.Property<int>("UsedUnit")
-                                .HasColumnType("int");
+                            b1.Property<string>("UsedUnit")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
                             b1.HasKey("Id", "ProductId");
 

@@ -19,16 +19,17 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
     {
-        services.AddPersistence()
+        services.AddPersistence(configuration)
                 .AddAuth(configuration);
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         return services;
     }
 
-    public static IServiceCollection AddPersistence(this IServiceCollection services)
+    public static IServiceCollection AddPersistence(this IServiceCollection services, ConfigurationManager configuration)
     {
-        services.AddDbContext<CostCraftDbCcontext>(options => options.UseSqlServer());
+        services.AddDbContext<CostCraftDbCcontext>(options => 
+            options.UseSqlServer(configuration.GetConnectionString("CostCraftDb")));
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IProductRepository, ProductRepository>();

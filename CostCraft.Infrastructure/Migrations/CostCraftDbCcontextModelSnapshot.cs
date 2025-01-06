@@ -58,7 +58,7 @@ namespace CostCraft.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Produts", (string)null);
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("CostCraft.Domain.UserAggregate.User", b =>
