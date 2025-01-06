@@ -2,12 +2,9 @@
 using CostCraft.Domain.ProductAggregate;
 using CostCraft.Domain.ProductAggregate.Entities;
 using CostCraft.Domain.ProductAggregate.Enums;
-using CostCraft.Domain.ProductAggregate.ValueObjects;
 using CostCraft.Domain.UserAggregate.ValueObjects;
 using ErrorOr;
 using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
-using System.Xml.Linq;
 
 namespace CostCraft.Application.Products.Commands.CreateProduct;
 
@@ -29,14 +26,14 @@ public class CreateProductCommandHandler
         var product = Product.Create(
             name: request.Name,
             unitsProduced: request.UnitsProduced,
-            userId: request.UserId,
+            userId: UserId.CreateFromString(request.UserId),
             profitMarginPercentage: request.ProfitMarginPercentage,
             materials: request.Materials.ConvertAll(material => Material.Create(
                 material.Name,
                 material.PurchasedAmount,
                 (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), material.PurchasedUnit),
                 material.PurchasedPrice,
-                material.UserAmount,
+                material.UsedAmount,
                 (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), material.UsedUnit))),
             labors: request.Labors.ConvertAll(labor => Labor.Create(
                 (MeasurementUnit)Enum.Parse(typeof (MeasurementUnit), labor.TimeUnit),

@@ -9,7 +9,9 @@ public record ProductResponse(
     DateTime UpdatedAt,
     decimal ProfitMarginPercentage,
     List<MaterialResponse> Materials,
-    List<LaborResponse> Labors);
+    List<LaborResponse> Labors,
+    decimal TotalCost,
+    decimal SalePrice);
 
 public record MaterialResponse(
     string Id,
@@ -17,7 +19,7 @@ public record MaterialResponse(
     decimal PurchasedAmount,
     string PurchasedUnit,
     decimal PurchasedPrice,
-    decimal UserAmount,
+    decimal UsedAmount,
     string UsedUnit);
 
 public record LaborResponse(

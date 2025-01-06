@@ -11,6 +11,16 @@ public sealed class UserId : ValueObject
         Value = value;
     }
 
+    public static UserId CreateFromString(string value)
+    {
+        if (Guid.TryParse(value, out var guidValue))
+        {
+            return new UserId(guidValue);
+        }
+
+        throw new ArgumentException("Invalid GUID format.", nameof(value)); // Should it be a problem?
+    }
+
     public static UserId CreateUnique()
     {
         return new UserId(Guid.NewGuid());

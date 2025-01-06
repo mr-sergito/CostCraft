@@ -1,6 +1,6 @@
 ﻿@CostCraft.Api_HostAddress = https://localhost:7287
-@UserId = dbe4bb55-b7ef-47f1-9330-7c6b15e9841f
-@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmU0YmI1NS1iN2VmLTQ3ZjEtOTMzMC03YzZiMTVlOTg0MWYiLCJ1bmlxdWVfbmFtZSI6Im1yLXNlcmdpdG8iLCJqdGkiOiI0OTdjMTVlZC00YzQxLTQxOWUtYWQ5MC1hNWI0NjMxMjhjMjEiLCJleHAiOjE3MzYxNzQxMjksImlzcyI6IkNvc3RDcmFmdCIsImF1ZCI6IkNvc3RDcmFmdCJ9.JFLHNHXXyMEvNMJBEslj82S7uPUPWTbtiL53UrjseyE
+@UserId = d591c1d1-85dd-4a5e-9723-cc99d06863a5
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNTkxYzFkMS04NWRkLTRhNWUtOTcyMy1jYzk5ZDA2ODYzYTUiLCJ1bmlxdWVfbmFtZSI6Im1yLXNlcmdpdG8iLCJqdGkiOiIzNjA0YzkzZi0xZGZjLTRiNjUtOGIyZC03Y2IxMjRjYTAzM2YiLCJleHAiOjE3MzYxODA4NDUsImlzcyI6IkNvc3RDcmFmdCIsImF1ZCI6IkNvc3RDcmFmdCJ9.ETH2gwSvkUeGkhL0VoR1A7veRLfkC4jAbAMxf3AYzIo
 
 POST {{CostCraft.Api_HostAddress}}/users/{{UserId}}/products
 Content-Type: application/json
@@ -13,10 +13,10 @@ Authorization: Bearer {{Token}}
 	"materials": [
 		{
 			"name": "Flour",
-			"purchasedQuantity": 1,
+			"purchasedAmount": 1,
 			"purchasedUnit": "Kilogram",
 			"purchasedPrice": 2.00,
-			"usedQuantity": 0.25,
+			"usedAmount": 0.25,
 			"usedUnit": "Kilogram",
 			"usedCost": 0.50
 		}

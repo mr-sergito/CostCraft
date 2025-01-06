@@ -20,21 +20,8 @@ public class Product : AggregateRoot<ProductId>
     public IReadOnlyList<Material> Materials => _materials.AsReadOnly();
     public IReadOnlyList<Labor> Labors => _labors.AsReadOnly();
 
-    public decimal TotalCost // Not setteable, not sure if this belongs here
-    {
-        get
-        {
-            return Materials.Sum(x => x.UsedCost) + Labors.Sum(x => x.TimeCost);
-        }
-    }
-    public decimal SalePrice // Not setteable, not sure if this belongs here
-    {
-        get
-        {
-            decimal profitFactor = 1 + ProfitMarginPercentage / 100m;
-            return TotalCost * profitFactor;
-        }
-    }
+    public decimal TotalCost { get; }
+    public decimal SalePrice { get; }
 
     private Product(
         ProductId productId,
@@ -44,8 +31,8 @@ public class Product : AggregateRoot<ProductId>
         DateTime createdAt,
         DateTime updatedAt,
         decimal profitMarginPercentage,
-        List<Material>? materials,
-        List<Labor>? labors)
+        List<Material> materials,
+        List<Labor> labors)
         : base(productId)
     {
         Name = name;
@@ -54,14 +41,12 @@ public class Product : AggregateRoot<ProductId>
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
         ProfitMarginPercentage = profitMarginPercentage;
-        if (materials is not null)
-        {
-            _materials.AddRange(materials);
-        }
-        if (labors is not null)
-        {
-            _labors.AddRange(labors);
-        }
+
+        _materials.AddRange(materials);
+        _labors.AddRange(labors);
+
+        TotalCost = Math.Round(materials.Sum(x => x.UsedCost) + labors.Sum(x => x.TimeCost), 2);
+        SalePrice = Math.Round(TotalCost * (1 + ProfitMarginPercentage / 100m), 2);
     }
 
     public static Product Create(
@@ -69,8 +54,8 @@ public class Product : AggregateRoot<ProductId>
         int unitsProduced,
         UserId userId,
         decimal profitMarginPercentage,
-        List<Material>? materials,
-        List<Labor>? labors)
+        List<Material> materials,
+        List<Labor> labors)
     {
         return new Product(
             ProductId.CreateUnique(),

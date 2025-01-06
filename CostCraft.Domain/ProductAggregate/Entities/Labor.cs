@@ -21,6 +21,8 @@ public sealed class Labor : Entity<LaborId>
         TimeUnit = timeUnit;
         TimePayRate = timePayRate;
         TimeWorked = timeWorked;
+
+        TimeCost = timePayRate * timeWorked;
     }
 
     public static Labor Create(

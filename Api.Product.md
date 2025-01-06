@@ -14,10 +14,10 @@ POST /users/{{id}}/products
 	"materials": [
 		{
 			"name": "Flour",
-			"purchasedQuantity": 1,
+			"purchasedAmount": 1,
 			"purchasedUnit": "kg",
 			"purchasedPrice": 2.00,
-			"usedQuantity": 0.25,
+			"usedAmount": 0.25,
 			"usedUnit": "kg",
 			"usedCost": 0.50
 		}
@@ -56,10 +56,10 @@ Location: users/{{id}}/products/{{id}}
 		{
 			"id": { "value": "00000000-0000-0000-0000-000000000000" },
 			"name": "Flour",
-			"purchasedQuantity": 1,
+			"purchasedAmount": 1,
 			"purchasedUnit": "kg",
 			"purchasedPrice": 2.00,
-			"usedQuantity": 0.25,
+			"usedAmount": 0.25,
 			"usedUnit": "kg",
 			"usedCost": 0.50
 		}
@@ -105,10 +105,10 @@ GET /users/{{id}}/products/{{id}}
 		{
 			"id": { "value": "00000000-0000-0000-0000-000000000000" },
 			"name": "Flour",
-			"purchasedQuantity": 1,
+			"purchasedAmount": 1,
 			"purchasedUnit": "kg",
 			"purchasedPrice": 2.00,
-			"usedQuantity": 0.25,
+			"usedAmount": 0.25,
 			"usedUnit": "kg",
 			"usedCost": 0.50
 		}
@@ -144,10 +144,10 @@ PUT /users/{{id}}/products/{{id}}
 		{
 			"id": { "value": "00000000-0000-0000-0000-000000000000" },
 			"name": "Flour",
-			"purchasedQuantity": 1,
+			"purchasedAmount": 1,
 			"purchasedUnit": "kg",
 			"purchasedPrice": 2.00,
-			"usedQuantity": 0.25,
+			"usedAmount": 0.25,
 			"usedUnit": "kg",
 			"usedCost": 0.50
 		}

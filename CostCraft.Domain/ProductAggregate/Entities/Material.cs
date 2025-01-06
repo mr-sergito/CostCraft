@@ -12,7 +12,7 @@ public sealed class Material : Entity<MaterialId>
     public decimal PurchasedPrice { get; }
     public decimal UsedAmount { get; }
     public MeasurementUnit UsedUnit { get; }
-    public decimal UsedCost { get; } // Not setteable, not sure if this belongs here
+    public decimal UsedCost { get; }
 
     private Material(
         MaterialId materialId,
@@ -30,6 +30,8 @@ public sealed class Material : Entity<MaterialId>
         PurchasedPrice = purchasedPrice;
         UsedAmount = usedAmount;
         UsedUnit = usedUnit;
+
+        UsedCost = usedAmount * purchasedPrice;
     }
 
     public static Material Create(

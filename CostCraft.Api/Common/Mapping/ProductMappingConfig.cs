@@ -10,7 +10,7 @@ public class ProductMappingConfig : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<(CreateProductRequest Request, string UserId), CreateProductCommand>()
-            .Map(dest => dest.UserId.Value, src => src.UserId)
+            .Map(dest => dest.UserId, src => src.UserId)
             .Map(dest => dest, src => src.Request);
 
         config.NewConfig<Product, ProductResponse>()

@@ -12,7 +12,7 @@ public record MaterialRequest(
     decimal PurchasedAmount,
     string PurchasedUnit,
     decimal PurchasedPrice,
-    decimal UserAmount,
+    decimal UsedAmount,
     string UsedUnit);
 
 public record LaborRequest(
