@@ -1,19 +1,19 @@
 ﻿using CostCraft.Domain.Common.Models;
 
-namespace CostCraft.Domain.Product.ValueObjects;
+namespace CostCraft.Domain.ProductAggregate.ValueObjects;
 
-public sealed class ProductId : ValueObject
+public sealed class MaterialId : ValueObject
 {
     public Guid Value { get; }
 
-    public ProductId(Guid value)
+    public MaterialId(Guid value)
     {
         Value = value;
     }
 
-    public static ProductId CreateUnique()
+    public static MaterialId CreateUnique()
     {
-        return new ProductId(Guid.NewGuid());
+        return new MaterialId(Guid.NewGuid());
     }
 
     public override IEnumerable<object> GetEqualityComponents()

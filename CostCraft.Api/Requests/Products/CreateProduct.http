@@ -1,0 +1,34 @@
+﻿@CostCraft.Api_HostAddress = https://localhost:7287
+@UserId = dbe4bb55-b7ef-47f1-9330-7c6b15e9841f
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmU0YmI1NS1iN2VmLTQ3ZjEtOTMzMC03YzZiMTVlOTg0MWYiLCJ1bmlxdWVfbmFtZSI6Im1yLXNlcmdpdG8iLCJqdGkiOiI0OTdjMTVlZC00YzQxLTQxOWUtYWQ5MC1hNWI0NjMxMjhjMjEiLCJleHAiOjE3MzYxNzQxMjksImlzcyI6IkNvc3RDcmFmdCIsImF1ZCI6IkNvc3RDcmFmdCJ9.JFLHNHXXyMEvNMJBEslj82S7uPUPWTbtiL53UrjseyE
+
+POST {{CostCraft.Api_HostAddress}}/users/{{UserId}}/products
+Content-Type: application/json
+Authorization: Bearer {{Token}}
+
+{
+  	"name": "Cake",
+	"unitsProduced": 1,
+	"profitMarginPercentage": 200,
+	"materials": [
+		{
+			"name": "Flour",
+			"purchasedQuantity": 1,
+			"purchasedUnit": "Kilogram",
+			"purchasedPrice": 2.00,
+			"usedQuantity": 0.25,
+			"usedUnit": "Kilogram",
+			"usedCost": 0.50
+		}
+	],
+	"labors": [
+		{
+			"timeUnit": "Hour",
+			"timePayRate": 10.00,
+			"timeWorked": 2,
+			"timeCost": 20.00
+		}
+	]
+}
+
+###

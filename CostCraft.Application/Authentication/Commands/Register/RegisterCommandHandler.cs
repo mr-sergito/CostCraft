@@ -1,10 +1,10 @@
-﻿using CostCraft.Application.Common.Interfaces.Authentication;
+﻿using CostCraft.Application.Authentication.Common;
+using CostCraft.Application.Common.Interfaces.Authentication;
 using CostCraft.Application.Common.Interfaces.Persistence;
-using CostCraft.Application.Authentication.Common;
 using CostCraft.Domain.Common.Errors;
+using CostCraft.Domain.UserAggregate;
 using ErrorOr;
 using MediatR;
-using CostCraft.Domain.User;
 
 namespace CostCraft.Application.Authentication.Commands.Register;
 
@@ -15,7 +15,7 @@ public class RegisterCommandHandler :
     private readonly IUserRepository _userRepository;
 
     public RegisterCommandHandler(
-        IJwtTokenGenerator jwtTokenGenerator, 
+        IJwtTokenGenerator jwtTokenGenerator,
         IUserRepository userRepository)
     {
         _jwtTokenGenerator = jwtTokenGenerator;
@@ -33,11 +33,10 @@ public class RegisterCommandHandler :
         }
 
         // Create user (generate unique ID) & Persist to DB
-        var user = new User
-        {
-            Username = command.Username,
-            Password = command.Password,
-        };
+        var user = User.Create(
+            command.Username, 
+            command.Password,
+            command.PreferredCurrency);
 
         _userRepository.Add(user);
 

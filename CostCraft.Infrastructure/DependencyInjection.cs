@@ -1,4 +1,5 @@
-﻿using CostCraft.Application.Common.Interfaces.Authentication;
+﻿using System.Text;
+using CostCraft.Application.Common.Interfaces.Authentication;
 using CostCraft.Application.Common.Interfaces.Persistence;
 using CostCraft.Application.Common.Interfaces.Services;
 using CostCraft.Infrastructure.Authentication;
@@ -9,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace CostCraft.Infrastructure;
 
@@ -17,11 +17,19 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
     {
-        services.AddAuth(configuration);
+        services.AddPersistence()
+                .AddAuth(configuration);
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-        services.AddScoped<IUserRepository, UserRepository>();
 
-        return services;    
+        return services;
+    }
+
+    public static IServiceCollection AddPersistence(this IServiceCollection services)
+    {
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
+
+        return services;
     }
 
     public static IServiceCollection AddAuth(this IServiceCollection services, ConfigurationManager configuration)

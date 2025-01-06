@@ -1,5 +1,5 @@
-﻿using CostCraft.Domain.User;
-using CostCraft.Domain.User.ValueObjects;
+﻿using CostCraft.Domain.UserAggregate;
+using CostCraft.Domain.UserAggregate.ValueObjects;
 
 namespace CostCraft.Application.Common.Interfaces.Persistence;
 

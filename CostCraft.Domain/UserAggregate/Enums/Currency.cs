@@ -1,4 +1,4 @@
-﻿namespace CostCraft.Domain.User.Enums;
+﻿namespace CostCraft.Domain.UserAggregate.Enums;
 
 public enum Currency
 {

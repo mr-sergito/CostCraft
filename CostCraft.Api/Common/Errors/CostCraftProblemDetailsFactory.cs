@@ -1,10 +1,10 @@
-﻿using CostCraft.Api.Common.Http;
+﻿using System.Diagnostics;
+using CostCraft.Api.Common.Http;
 using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
-using System.Diagnostics;
 
 namespace CostCraft.Api.Common.Errors;
 

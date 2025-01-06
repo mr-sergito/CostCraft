@@ -1,8 +1,8 @@
 ﻿using CostCraft.Domain.Common.Models;
-using CostCraft.Domain.Product.Enums;
-using CostCraft.Domain.Product.ValueObjects;
+using CostCraft.Domain.ProductAggregate.Enums;
+using CostCraft.Domain.ProductAggregate.ValueObjects;
 
-namespace CostCraft.Domain.Product.Entities;
+namespace CostCraft.Domain.ProductAggregate.Entities;
 
 public sealed class Material : Entity<MaterialId>
 {
@@ -15,13 +15,13 @@ public sealed class Material : Entity<MaterialId>
     public decimal UsedCost { get; } // Not setteable, not sure if this belongs here
 
     private Material(
-        MaterialId materialId, 
-        string name, 
-        decimal purchasedAmount, 
-        MeasurementUnit purchasedUnit, 
+        MaterialId materialId,
+        string name,
+        decimal purchasedAmount,
+        MeasurementUnit purchasedUnit,
         decimal purchasedPrice,
-        decimal usedAmount, 
-        MeasurementUnit usedUnit) 
+        decimal usedAmount,
+        MeasurementUnit usedUnit)
         : base(materialId)
     {
         Name = name;

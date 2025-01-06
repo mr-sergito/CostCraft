@@ -1,9 +1,9 @@
 ﻿using CostCraft.Domain.Common.Models;
-using CostCraft.Domain.Product.Entities;
-using CostCraft.Domain.Product.ValueObjects;
-using CostCraft.Domain.User.ValueObjects;
+using CostCraft.Domain.ProductAggregate.Entities;
+using CostCraft.Domain.ProductAggregate.ValueObjects;
+using CostCraft.Domain.UserAggregate.ValueObjects;
 
-namespace CostCraft.Domain.Product;
+namespace CostCraft.Domain.ProductAggregate;
 
 public class Product : AggregateRoot<ProductId>
 {
@@ -31,7 +31,7 @@ public class Product : AggregateRoot<ProductId>
     {
         get
         {
-            decimal profitFactor = 1 + (ProfitMarginPercentage / 100m);
+            decimal profitFactor = 1 + ProfitMarginPercentage / 100m;
             return TotalCost * profitFactor;
         }
     }
@@ -43,7 +43,9 @@ public class Product : AggregateRoot<ProductId>
         UserId userId,
         DateTime createdAt,
         DateTime updatedAt,
-        decimal profitMarginPercentage) 
+        decimal profitMarginPercentage,
+        List<Material>? materials,
+        List<Labor>? labors)
         : base(productId)
     {
         Name = name;
@@ -52,13 +54,23 @@ public class Product : AggregateRoot<ProductId>
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
         ProfitMarginPercentage = profitMarginPercentage;
+        if (materials is not null)
+        {
+            _materials.AddRange(materials);
+        }
+        if (labors is not null)
+        {
+            _labors.AddRange(labors);
+        }
     }
 
     public static Product Create(
         string name,
         int unitsProduced,
         UserId userId,
-        decimal profitMarginPercentage)
+        decimal profitMarginPercentage,
+        List<Material>? materials,
+        List<Labor>? labors)
     {
         return new Product(
             ProductId.CreateUnique(),
@@ -67,6 +79,8 @@ public class Product : AggregateRoot<ProductId>
             userId,
             DateTime.UtcNow,
             DateTime.UtcNow,
-            profitMarginPercentage);
+            profitMarginPercentage,
+            materials,
+            labors);
     }
 }

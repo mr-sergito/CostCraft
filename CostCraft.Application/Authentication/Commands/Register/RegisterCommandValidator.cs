@@ -8,5 +8,6 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
     {
         RuleFor(x => x.Username).NotEmpty();
         RuleFor(x => x.Password).NotEmpty();
+        RuleFor(x => x.PreferredCurrency).NotEmpty();
     }
 }

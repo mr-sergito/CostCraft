@@ -1,4 +1,4 @@
-﻿using CostCraft.Domain.User;
+﻿using CostCraft.Domain.UserAggregate;
 
 namespace CostCraft.Application.Authentication.Common;
 

@@ -1,9 +1,9 @@
 ﻿using CostCraft.Domain.Common.Models;
-using CostCraft.Domain.Product.ValueObjects;
-using CostCraft.Domain.User.Enums;
-using CostCraft.Domain.User.ValueObjects;
+using CostCraft.Domain.ProductAggregate.ValueObjects;
+using CostCraft.Domain.UserAggregate.Enums;
+using CostCraft.Domain.UserAggregate.ValueObjects;
 
-namespace CostCraft.Domain.User;
+namespace CostCraft.Domain.UserAggregate;
 
 public sealed class User : AggregateRoot<UserId>
 {

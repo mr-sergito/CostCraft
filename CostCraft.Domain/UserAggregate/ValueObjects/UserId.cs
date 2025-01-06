@@ -1,6 +1,6 @@
 ﻿using CostCraft.Domain.Common.Models;
 
-namespace CostCraft.Domain.User.ValueObjects;
+namespace CostCraft.Domain.UserAggregate.ValueObjects;
 
 public sealed class UserId : ValueObject
 {

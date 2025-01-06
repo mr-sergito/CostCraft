@@ -1,6 +1,6 @@
 ﻿using CostCraft.Domain.Common.Models;
 
-namespace CostCraft.Domain.Product.ValueObjects;
+namespace CostCraft.Domain.ProductAggregate.ValueObjects;
 
 public sealed class LaborId : ValueObject
 {

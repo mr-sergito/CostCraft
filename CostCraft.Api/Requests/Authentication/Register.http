@@ -5,7 +5,8 @@ Content-Type: application/json
 
 {
   "username": "mr-sergito",
-  "password": "mr-sergito123"
+  "password": "mr-sergito123",
+  "preferredCurrency": "EUR"
 }
 
 ###
@@ -15,7 +16,8 @@ Content-Type: application/json
 
 {
   "username": "",
-  "password": ""
+  "password": "",
+  "preferredCurrency": ""
 }
 
 ###
@@ -25,7 +27,8 @@ Content-Type: application/json
 
 {
   "username": "mr-sergito",
-  "password": null
+  "password": null,
+  "preferredCurrency": "EUR"
 }
 
 ###

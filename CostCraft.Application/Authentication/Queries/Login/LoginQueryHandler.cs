@@ -1,10 +1,10 @@
-﻿using CostCraft.Application.Common.Interfaces.Authentication;
+﻿using CostCraft.Application.Authentication.Common;
+using CostCraft.Application.Common.Interfaces.Authentication;
 using CostCraft.Application.Common.Interfaces.Persistence;
-using CostCraft.Application.Authentication.Common;
 using CostCraft.Domain.Common.Errors;
+using CostCraft.Domain.UserAggregate;
 using ErrorOr;
 using MediatR;
-using CostCraft.Domain.User;
 
 namespace CostCraft.Application.Authentication.Queries.Login;
 

@@ -1,4 +1,4 @@
-﻿namespace CostCraft.Domain.Product.Enums;
+﻿namespace CostCraft.Domain.ProductAggregate.Enums;
 
 public enum MeasurementUnit
 {

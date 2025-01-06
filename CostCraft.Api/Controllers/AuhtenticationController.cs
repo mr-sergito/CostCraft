@@ -44,7 +44,7 @@ public class AuhtenticationController : ApiController
         if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
         {
             return Problem(
-                statusCode: StatusCodes.Status401Unauthorized, 
+                statusCode: StatusCodes.Status401Unauthorized,
                 title: authResult.FirstError.Description);
         }
 

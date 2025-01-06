@@ -1,11 +1,11 @@
-﻿using CostCraft.Application.Common.Interfaces.Authentication;
-using CostCraft.Application.Common.Interfaces.Services;
-using CostCraft.Domain.User;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using CostCraft.Application.Common.Interfaces.Authentication;
+using CostCraft.Application.Common.Interfaces.Services;
+using CostCraft.Domain.UserAggregate;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CostCraft.Infrastructure.Authentication;
 
@@ -28,7 +28,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
 
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+            new Claim(JwtRegisteredClaimNames.Sub, user.Id.Value.ToString()),
             new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
         };
