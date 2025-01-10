@@ -8,9 +8,9 @@ POST /users
 
 ```js
 {
-	"username": "mr-sergito",
-	"password": "mr-sergito123", // TODO: Hash this
-	"preferredCurrency": "EUR"
+ "username": "mr-sergito",
+ "password": "mr-sergito123", // TODO: Hash this
+ "preferredCurrency": "EUR"
 }
 ```
 
@@ -26,13 +26,13 @@ Location: {{host}}/users/{{id}}
 
 ```js
 {
-	"id": { "value": "00000000-0000-0000-0000-000000000000" },
-	"username": "mr-sergito",
-	"password": "mr-sergito123", // TODO: Hash this
-	"preferredCurrency": "EUR",
-	"createdAt": "2025-01-01T12:00:00Z",
-	"updatedAt": "2025-01-02T12:00:00Z",
-	"productIds": []
+ "id": { "value": "00000000-0000-0000-0000-000000000000" },
+ "username": "mr-sergito",
+ "password": "mr-sergito123", // TODO: Hash this
+ "preferredCurrency": "EUR",
+ "createdAt": "2025-01-01T12:00:00Z",
+ "updatedAt": "2025-01-02T12:00:00Z",
+ "productIds": []
 }
 ```
 
@@ -52,16 +52,16 @@ GET /users/{{id}}
 
 ```js
 {
-	"id": { "value": "00000000-0000-0000-0000-000000000000" },
-	"username": "mr-sergito",
-	"password": "mr-sergito123", // TODO: Hash this
-	"preferredCurrency": "EUR",
-	"createdAt": "2025-01-01T12:00:00Z",
-	"updatedAt": "2025-01-02T12:00:00Z",
-	"productIds": [
-		{ "value": "00000000-0000-0000-0000-000000000000" },
-		{ "value": "00000000-0000-0000-0000-000000000000" },
-	],
+ "id": { "value": "00000000-0000-0000-0000-000000000000" },
+ "username": "mr-sergito",
+ "password": "mr-sergito123", // TODO: Hash this
+ "preferredCurrency": "EUR",
+ "createdAt": "2025-01-01T12:00:00Z",
+ "updatedAt": "2025-01-02T12:00:00Z",
+ "productIds": [
+  { "value": "00000000-0000-0000-0000-000000000000" },
+  { "value": "00000000-0000-0000-0000-000000000000" },
+ ],
 }
 ```
 
@@ -75,13 +75,13 @@ PUT /users/{{id}}
 
 ```js
 {
-	"username": "mr-sergito",
-	"password": "mr-sergito123", // TODO: Hash this
-	"preferredCurrency": "EUR",
-	"productIds": [
-		{ "value": "00000000-0000-0000-0000-000000000000" },
-		{ "value": "00000000-0000-0000-0000-000000000000" },
-	],
+ "username": "mr-sergito",
+ "password": "mr-sergito123", // TODO: Hash this
+ "preferredCurrency": "EUR",
+ "productIds": [
+  { "value": "00000000-0000-0000-0000-000000000000" },
+  { "value": "00000000-0000-0000-0000-000000000000" },
+ ],
 }
 ```
 

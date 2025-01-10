@@ -8,28 +8,28 @@ POST /users/{{id}}/products
 
 ```js
 {
-	"name": "Cake",
-	"unitsProduced": 1,
-	"profitMarginPercentage": 200,
-	"materials": [
-		{
-			"name": "Flour",
-			"purchasedAmount": 1,
-			"purchasedUnit": "kg",
-			"purchasedPrice": 2.00,
-			"usedAmount": 0.25,
-			"usedUnit": "kg",
-			"usedCost": 0.50
-		}
-	],
-	"labors": [
-		{
-			"timeUnit": "hour",
-			"timePayRate": 10.00,
-			"timeWorked": 2,
-			"timeCost": 20.00
-		}
-	],
+ "name": "Cake",
+ "unitsProduced": 1,
+ "profitMarginPercentage": 200,
+ "materials": [
+  {
+   "name": "Flour",
+   "purchasedAmount": 1,
+   "purchasedUnit": "kg",
+   "purchasedPrice": 2.00,
+   "usedAmount": 0.25,
+   "usedUnit": "kg",
+   "usedCost": 0.50
+  }
+ ],
+ "labors": [
+  {
+   "timeUnit": "hour",
+   "timePayRate": 10.00,
+   "timeWorked": 2,
+   "timeCost": 20.00
+  }
+ ],
 }
 ```
 
@@ -45,36 +45,36 @@ Location: users/{{id}}/products/{{id}}
 
 ```js
 {
-	"id": { "value": "00000000-0000-0000-0000-000000000000" },
-	"name": "Cake",
-	"unitsProduced": 1,
-	"userId": { "value": "00000000-0000-0000-0000-000000000000" },
-	"createdAt": "2025-01-01T12:00:00Z",
-	"updatedAt": "2025-01-02T12:00:00Z",
-	"profitMarginPercentage": 200,
-	"materials": [
-		{
-			"id": { "value": "00000000-0000-0000-0000-000000000000" },
-			"name": "Flour",
-			"purchasedAmount": 1,
-			"purchasedUnit": "kg",
-			"purchasedPrice": 2.00,
-			"usedAmount": 0.25,
-			"usedUnit": "kg",
-			"usedCost": 0.50
-		}
-	],
-	"labors": [
-		{
-			"id": { "value": "00000000-0000-0000-0000-000000000000" },
-			"timeUnit": "hour",
-			"timePayRate": 10.00,
-			"timeWorked": 2,
-			"timeCost": 20.00
-		}
-	],
-	"totalCost": 20.50,
-	"salePrice": 61.50
+ "id": { "value": "00000000-0000-0000-0000-000000000000" },
+ "name": "Cake",
+ "unitsProduced": 1,
+ "userId": { "value": "00000000-0000-0000-0000-000000000000" },
+ "createdAt": "2025-01-01T12:00:00Z",
+ "updatedAt": "2025-01-02T12:00:00Z",
+ "profitMarginPercentage": 200,
+ "materials": [
+  {
+   "id": { "value": "00000000-0000-0000-0000-000000000000" },
+   "name": "Flour",
+   "purchasedAmount": 1,
+   "purchasedUnit": "kg",
+   "purchasedPrice": 2.00,
+   "usedAmount": 0.25,
+   "usedUnit": "kg",
+   "usedCost": 0.50
+  }
+ ],
+ "labors": [
+  {
+   "id": { "value": "00000000-0000-0000-0000-000000000000" },
+   "timeUnit": "hour",
+   "timePayRate": 10.00,
+   "timeWorked": 2,
+   "timeCost": 20.00
+  }
+ ],
+ "totalCost": 20.50,
+ "salePrice": 61.50
 }
 ```
 
@@ -94,36 +94,36 @@ GET /users/{{id}}/products/{{id}}
 
 ```js
 {
-	"id": { "value": "00000000-0000-0000-0000-000000000000" },
-	"name": "Cake",
-	"unitsProduced": 1,
-	"userId": { "value": "00000000-0000-0000-0000-000000000000" },
-	"createdAt": "2025-01-01T12:00:00Z",
-	"updatedAt": "2025-01-02T12:00:00Z",
-	"profitMarginPercentage": 200,
-	"materials": [
-		{
-			"id": { "value": "00000000-0000-0000-0000-000000000000" },
-			"name": "Flour",
-			"purchasedAmount": 1,
-			"purchasedUnit": "kg",
-			"purchasedPrice": 2.00,
-			"usedAmount": 0.25,
-			"usedUnit": "kg",
-			"usedCost": 0.50
-		}
-	],
-	"labors": [
-		{
-			"id": { "value": "00000000-0000-0000-0000-000000000000" },
-			"timeUnit": "hour",
-			"timePayRate": 10.00,
-			"timeWorked": 2,
-			"timeCost": 20.00
-		}
-	],
-	"totalCost": 20.50,
-	"salePrice": 61.50
+ "id": { "value": "00000000-0000-0000-0000-000000000000" },
+ "name": "Cake",
+ "unitsProduced": 1,
+ "userId": { "value": "00000000-0000-0000-0000-000000000000" },
+ "createdAt": "2025-01-01T12:00:00Z",
+ "updatedAt": "2025-01-02T12:00:00Z",
+ "profitMarginPercentage": 200,
+ "materials": [
+  {
+   "id": { "value": "00000000-0000-0000-0000-000000000000" },
+   "name": "Flour",
+   "purchasedAmount": 1,
+   "purchasedUnit": "kg",
+   "purchasedPrice": 2.00,
+   "usedAmount": 0.25,
+   "usedUnit": "kg",
+   "usedCost": 0.50
+  }
+ ],
+ "labors": [
+  {
+   "id": { "value": "00000000-0000-0000-0000-000000000000" },
+   "timeUnit": "hour",
+   "timePayRate": 10.00,
+   "timeWorked": 2,
+   "timeCost": 20.00
+  }
+ ],
+ "totalCost": 20.50,
+ "salePrice": 61.50
 }
 ```
 
@@ -137,30 +137,30 @@ PUT /users/{{id}}/products/{{id}}
 
 ```js
 {
-	"name": "Cake",
-	"unitsProduced": 1,
-	"profitMarginPercentage": 200,
-	"materials": [
-		{
-			"id": { "value": "00000000-0000-0000-0000-000000000000" },
-			"name": "Flour",
-			"purchasedAmount": 1,
-			"purchasedUnit": "kg",
-			"purchasedPrice": 2.00,
-			"usedAmount": 0.25,
-			"usedUnit": "kg",
-			"usedCost": 0.50
-		}
-	],
-	"labors": [
-		{
-			"id": { "value": "00000000-0000-0000-0000-000000000000" },
-			"timeUnit": "hour",
-			"timePayRate": 10.00,
-			"timeWorked": 2,
-			"timeCost": 20.00
-		}
-	],
+ "name": "Cake",
+ "unitsProduced": 1,
+ "profitMarginPercentage": 200,
+ "materials": [
+  {
+   "id": { "value": "00000000-0000-0000-0000-000000000000" },
+   "name": "Flour",
+   "purchasedAmount": 1,
+   "purchasedUnit": "kg",
+   "purchasedPrice": 2.00,
+   "usedAmount": 0.25,
+   "usedUnit": "kg",
+   "usedCost": 0.50
+  }
+ ],
+ "labors": [
+  {
+   "id": { "value": "00000000-0000-0000-0000-000000000000" },
+   "timeUnit": "hour",
+   "timePayRate": 10.00,
+   "timeWorked": 2,
+   "timeCost": 20.00
+  }
+ ],
 }
 ```
 

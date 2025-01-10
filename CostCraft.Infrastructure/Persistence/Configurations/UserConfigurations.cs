@@ -12,7 +12,7 @@ public class UserConfigurations : IEntityTypeConfiguration<User>
     public void Configure(EntityTypeBuilder<User> builder)
     {
         ConfigureUsersTable(builder);
-        ConfigureProductIdsTable(builder);
+        ConfigureUserProductIdsTable(builder);
     }
 
     private void ConfigureUsersTable(EntityTypeBuilder<User> builder)
@@ -42,7 +42,7 @@ public class UserConfigurations : IEntityTypeConfiguration<User>
                     value => Enum.Parse<Currency>(value));
     }
 
-    private void ConfigureProductIdsTable(EntityTypeBuilder<User> builder)
+    private void ConfigureUserProductIdsTable(EntityTypeBuilder<User> builder)
     {
         builder.OwnsMany(m => m.ProductIds, prb =>
         {
