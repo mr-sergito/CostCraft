@@ -1,6 +1,6 @@
 ﻿namespace CostCraft.Contracts.Authentication;
 
 public record RegisterRequest(
-    string Username,
+    string userName,
     string Password,
     string PreferredCurrency);

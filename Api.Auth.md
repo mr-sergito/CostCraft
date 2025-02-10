@@ -8,7 +8,7 @@ POST /auth/register
 
 ```js
 {
- "username": "mr-sergito",
+ "userName": "mr-sergito",
  "password": "mr-sergito123"
 }
 ```
@@ -22,7 +22,7 @@ POST /auth/register
 ```js
 {
  "id": { "value": "00000000-0000-0000-0000-000000000000" },
- "username": "mr-sergito",
+ "userName": "mr-sergito",
  "password": "mr-sergito123", // TODO: Hash this
 }
 ```
@@ -37,7 +37,7 @@ POST /auth/login
 
 ```js
 {
- "username": "mr-sergito",
+ "userName": "mr-sergito",
  "password": "mr-sergito123"
 }
 ```
@@ -55,7 +55,7 @@ Location: /users/{{id}}
 ```js
 {
  "id": { "value": "00000000-0000-0000-0000-000000000000" },
- "username": "mr-sergito",
+ "userName": "mr-sergito",
  "password": "mr-sergito123", // TODO: Hash this
 }
 ```

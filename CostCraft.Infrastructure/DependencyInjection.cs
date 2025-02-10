@@ -20,7 +20,7 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
     {
         services.AddPersistence(configuration)
-                .AddAuth(configuration);
+                .AddCustomAuthentication(configuration);
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         return services;
@@ -37,7 +37,7 @@ public static class DependencyInjection
         return services;
     }
 
-    public static IServiceCollection AddAuth(this IServiceCollection services, ConfigurationManager configuration)
+    public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, ConfigurationManager configuration)
     {
         var jwtSettings = new JwtSettings();
         configuration.Bind(JwtSettings.SectionName, jwtSettings);

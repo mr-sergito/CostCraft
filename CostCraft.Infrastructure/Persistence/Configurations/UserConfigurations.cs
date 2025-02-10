@@ -1,5 +1,4 @@
-﻿using CostCraft.Domain.ProductAggregate.Enums;
-using CostCraft.Domain.UserAggregate;
+﻿using CostCraft.Domain.UserAggregate;
 using CostCraft.Domain.UserAggregate.Enums;
 using CostCraft.Domain.UserAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +26,7 @@ public class UserConfigurations : IEntityTypeConfiguration<User>
                 id => id.Value,
                 value => UserId.CreateFromGuid(value));
 
-        builder.Property(m => m.Username)
+        builder.Property(m => m.UserName)
             .IsRequired()
             .HasMaxLength(50);
 

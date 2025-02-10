@@ -2,5 +2,6 @@
 
 public record AuthenticationResponse(
     Guid Id,
-    string Username,
+    string UserName,
+    string PreferredCurrency,
     string Token);

@@ -6,7 +6,7 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
 {
     public RegisterCommandValidator()
     {
-        RuleFor(x => x.Username).NotEmpty();
+        RuleFor(x => x.userName).NotEmpty();
         RuleFor(x => x.Password).NotEmpty();
         RuleFor(x => x.PreferredCurrency).NotEmpty();
     }

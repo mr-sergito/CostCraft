@@ -5,10 +5,10 @@
 ```csharp
 class User
 {
- User Create(string username, string password, string preferredCurrency);
+ User Create(string userName, string password, string preferredCurrency);
  void AddProduct(Product product);
  void RemoveProduct(Guid productId);
- void UpdateUsername(string username);
+ void UpdateuserName(string userName);
  void UpdatePassword(string password);
  void UpdatePreferredCurrency(string currency);
  Product GetProduct(Guid productId);
@@ -19,7 +19,7 @@ class User
 ```json
 {
  "id": { "value": "00000000-0000-0000-0000-000000000000" },
- "username": "mr-sergito",
+ "userName": "mr-sergito",
  "password": "mr-sergito123", // TODO: Hash this
  "preferredCurrency": "EUR",
  "createdAt": "2025-01-01T12:00:00Z",

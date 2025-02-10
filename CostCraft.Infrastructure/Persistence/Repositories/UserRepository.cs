@@ -21,15 +21,22 @@ public class UserRepository : IUserRepository
 
     public User? GetUserById(UserId id)
     {
-        return default(User?);
-
-        //return _dbCcontext.SingleOrDefault(u => u.Id == id);
+        return _dbCcontext.Users.SingleOrDefault(u => u.Id == id);
     }
 
-    public User? GetUserByUsername(string username)
+    public User? GetUserByuserName(string userName)
     {
-        return default(User?);
+        return _dbCcontext.Users.SingleOrDefault(u => u.UserName == userName);
+    }
 
-        //return _dbCcontext.SingleOrDefault(u => u.Username == username);
+    public void Update(User user)
+    {
+        _dbCcontext.Update(user);
+        _dbCcontext.SaveChanges();
+    }
+
+    public void Remove(UserId id)
+    {
+        _dbCcontext.Remove(id);
     }
 }

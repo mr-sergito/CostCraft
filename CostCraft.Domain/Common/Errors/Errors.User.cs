@@ -6,8 +6,8 @@ public static partial class Errors
 {
     public static class User
     {
-        public static Error DuplicateUsername => Error.Conflict(
-            code: "User.DuplicateUsername",
-            description: "Username already exists.");
+        public static Error DuplicateUserName => Error.Conflict(
+            code: "User.DuplicateUserName",
+            description: "UserName already exists.");
     }
 }

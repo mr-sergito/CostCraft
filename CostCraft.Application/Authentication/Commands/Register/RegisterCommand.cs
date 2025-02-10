@@ -6,6 +6,6 @@ using MediatR;
 namespace CostCraft.Application.Authentication.Commands.Register;
 
 public record RegisterCommand(
-    string Username,
+    string userName,
     string Password,
     Currency PreferredCurrency) : IRequest<ErrorOr<AuthenticationResult>>;

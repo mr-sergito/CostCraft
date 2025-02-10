@@ -1,4 +1,4 @@
-﻿using CostCraft.Application.Products.Commands.CreateProduct;
+﻿using CostCraft.Application.Users.Commands.UpdateUser;
 using CostCraft.Contracts.Products;
 using CostCraft.Domain.ProductAggregate;
 using CostCraft.Domain.ProductAggregate.Entities;
@@ -10,7 +10,7 @@ public class ProductMappingConfig : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {
-        config.NewConfig<(CreateProductRequest Request, string UserId), CreateProductCommand>()
+        config.NewConfig<(CreateProductRequest Request, string UserId), UpdateUserCommand>()
             .Map(dest => dest.UserId, src => src.UserId)
             .Map(dest => dest, src => src.Request);
 

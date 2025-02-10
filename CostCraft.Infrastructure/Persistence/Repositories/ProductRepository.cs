@@ -21,8 +21,6 @@ public class ProductRepository : IProductRepository
 
     public Product? GetProductById(ProductId id)
     {
-        return default(Product?);
-
-        //return _dbCcontext.SingleOrDefault(p => p.Id == id);
+        return _dbCcontext.Products.SingleOrDefault(p => p.Id == id);
     }
 }

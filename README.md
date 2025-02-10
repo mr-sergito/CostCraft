@@ -27,7 +27,7 @@ accurate and user-friendly way to calculate product costs.
 
     Attributes:
   - id (unique)
-  - username (unique)
+  - userName (unique)
   - password
   - preferredCurrency
   - products (list of Product entities)
@@ -143,4 +143,4 @@ accurate and user-friendly way to calculate product costs.
   - Automatic calculations for costs and sale price.
 
 - Profile Screen (for registered users)
-  - View or edit username, password, and currency preference.
+  - View or edit userName, password, and currency preference.

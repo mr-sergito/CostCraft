@@ -5,7 +5,9 @@ namespace CostCraft.Application.Common.Interfaces.Persistence;
 
 public interface IUserRepository
 {
-    User? GetUserById(UserId id);
-    User? GetUserByUsername(string username);
     void Add(User user);
+    User? GetUserById(UserId id);
+    User? GetUserByuserName(string userName);
+    void Update(User user);
+    void Remove(UserId id);
 }

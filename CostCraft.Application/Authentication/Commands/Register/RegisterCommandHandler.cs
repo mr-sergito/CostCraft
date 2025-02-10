@@ -27,14 +27,14 @@ public class RegisterCommandHandler :
         await Task.CompletedTask;
 
         // Validate the user doesn't exist
-        if (_userRepository.GetUserByUsername(command.Username) is not null)
+        if (_userRepository.GetUserByuserName(command.userName) is not null)
         {
-            return Errors.User.DuplicateUsername;
+            return Errors.User.DuplicateuserName;
         }
 
         // Create user (generate unique ID) & Persist to DB
         var user = User.Create(
-            command.Username, 
+            command.userName, 
             command.Password,
             command.PreferredCurrency);
 

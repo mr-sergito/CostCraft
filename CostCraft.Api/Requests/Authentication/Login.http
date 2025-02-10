@@ -4,7 +4,7 @@ POST {{CostCraft.Api_HostAddress}}/auth/login
 Content-Type: application/json
 
 {
-  "username": "mr-sergito",
+  "userName": "mr-sergito",
   "password": "mr-sergito123"
 }
 
@@ -14,7 +14,7 @@ POST {{CostCraft.Api_HostAddress}}/auth/login
 Content-Type: application/json
 
 {
-  "username": "mr-sergitoo",
+  "userName": "mr-sergitoo",
   "password": "mr-sergito123"
 }
 
@@ -24,7 +24,7 @@ POST {{CostCraft.Api_HostAddress}}/auth/login
 Content-Type: application/json
 
 {
-  "username": "mr-sergito",
+  "userName": "mr-sergito",
   "password": "mr-sergito1234"
 }
 

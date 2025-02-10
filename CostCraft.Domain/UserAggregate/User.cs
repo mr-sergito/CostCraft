@@ -9,7 +9,7 @@ public sealed class User : AggregateRoot<UserId>
 {
     private readonly List<ProductId> _productIds = [];
 
-    public string Username { get; private set; }
+    public string UserName { get; private set; }
     public string Password { get; private set; }
     public Currency PreferredCurrency { get; private set; }
     public DateTime CreatedAt { get; private set; }
@@ -19,32 +19,18 @@ public sealed class User : AggregateRoot<UserId>
 
     private User(
         UserId userId,
-        string username,
+        string userName,
         string password,
         Currency preferredCurrency,
         DateTime createdAt,
         DateTime updatedAt)
         : base(userId)
     {
-        Username = username;
+        UserName = userName;
         Password = password;
         PreferredCurrency = preferredCurrency;
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
-    }
-
-    public static User Create(
-        string username,
-        string password,
-        Currency preferredCurrency)
-    {
-        return new User(
-            UserId.CreateUnique(),
-            username,
-            password,
-            preferredCurrency,
-            DateTime.UtcNow,
-            DateTime.UtcNow);
     }
 
 #pragma warning disable CS8618
@@ -53,4 +39,18 @@ public sealed class User : AggregateRoot<UserId>
 
     }
 #pragma warning restore CS8618
+
+    public static User Create(
+        string userName,
+        string password,
+        Currency preferredCurrency)
+    {
+        return new User(
+            UserId.CreateUnique(),
+            userName,
+            password,
+            preferredCurrency,
+            DateTime.UtcNow,
+            DateTime.UtcNow);
+    }
 }

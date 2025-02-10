@@ -4,7 +4,7 @@ POST {{CostCraft.Api_HostAddress}}/auth/register
 Content-Type: application/json
 
 {
-  "username": "mr-sergito",
+  "userName": "mr-sergito",
   "password": "mr-sergito123",
   "preferredCurrency": "EUR"
 }
@@ -15,7 +15,7 @@ POST {{CostCraft.Api_HostAddress}}/auth/register
 Content-Type: application/json
 
 {
-  "username": "",
+  "userName": "",
   "password": "",
   "preferredCurrency": ""
 }
@@ -26,7 +26,7 @@ POST {{CostCraft.Api_HostAddress}}/auth/register
 Content-Type: application/json
 
 {
-  "username": "mr-sergito",
+  "userName": "mr-sergito",
   "password": null,
   "preferredCurrency": "EUR"
 }

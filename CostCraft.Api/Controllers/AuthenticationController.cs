@@ -13,12 +13,12 @@ namespace CostCraft.Api.Controllers;
 
 [Route("auth")]
 [AllowAnonymous]
-public class AuhtenticationController : ApiController
+public class AuthenticationController : ApiController
 {
     private readonly ISender _mediator;
     private readonly IMapper _mapper;
 
-    public AuhtenticationController(ISender mediator, IMapper mapper)
+    public AuthenticationController(ISender mediator, IMapper mapper)
     {
         _mediator = mediator;
         _mapper = mapper;
