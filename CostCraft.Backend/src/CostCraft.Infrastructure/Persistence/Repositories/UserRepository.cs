@@ -24,7 +24,7 @@ public class UserRepository : IUserRepository
         return _dbCcontext.Users.SingleOrDefault(u => u.Id == id);
     }
 
-    public User? GetUserByuserName(string userName)
+    public User? GetUserByUserName(string userName)
     {
         return _dbCcontext.Users.SingleOrDefault(u => u.UserName == userName);
     }

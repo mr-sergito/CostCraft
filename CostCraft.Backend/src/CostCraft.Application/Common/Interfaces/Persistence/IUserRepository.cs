@@ -7,7 +7,7 @@ public interface IUserRepository
 {
     void Add(User user);
     User? GetUserById(UserId id);
-    User? GetUserByuserName(string userName);
+    User? GetUserByUserName(string userName);
     void Update(User user);
     void Remove(UserId id);
 }

@@ -6,15 +6,15 @@ using CostCraft.Domain.UserAggregate;
 using ErrorOr;
 using MediatR;
 
-namespace CostCraft.Application.Authentication.Commands.Register;
+namespace CostCraft.Application.Authentication.Queries.Login;
 
-public class RegisterCommandHandler :
-    IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
+public class LoginQueryHandler :
+    IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
 
-    public RegisterCommandHandler(
+    public LoginQueryHandler(
         IJwtTokenGenerator jwtTokenGenerator,
         IUserRepository userRepository)
     {
@@ -22,23 +22,21 @@ public class RegisterCommandHandler :
         _userRepository = userRepository;
     }
 
-    public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
+    public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
 
-        // Validate the user doesn't exist
-        if (_userRepository.GetUserByuserName(command.userName) is not null)
+        // Validate the user exists
+        if (_userRepository.GetUserByUserName(query.UserName) is not User user)
         {
-            return Errors.User.DuplicateuserName;
+            return new[] { Errors.Authentication.InvalidCredentials };
         }
 
-        // Create user (generate unique ID) & Persist to DB
-        var user = User.Create(
-            command.userName, 
-            command.Password,
-            command.PreferredCurrency);
-
-        _userRepository.Add(user);
+        // Validate the password is correct
+        if (user.Password != query.Password)
+        {
+            return new[] { Errors.Authentication.InvalidCredentials };
+        }
 
         // Create JWT token
         var token = _jwtTokenGenerator.GenerateToken(user);
