@@ -1,7 +1,7 @@
-﻿using CostCraft.Application.Authentication.Commands.Register;
-using CostCraft.Application.Authentication.Common;
-using CostCraft.Application.Authentication.Queries.Login;
-using CostCraft.Contracts.Authentication;
+﻿using CostCraft.Application.Auth.Commands.Register;
+using CostCraft.Application.Auth.Common;
+using CostCraft.Application.Auth.Queries.Login;
+using CostCraft.Contracts.Auth;
 using CostCraft.Domain.Common.Errors;
 using ErrorOr;
 using MapsterMapper;
@@ -13,12 +13,12 @@ namespace CostCraft.Api.Controllers;
 
 [Route("auth")]
 [AllowAnonymous]
-public class AuthenticationController : ApiController
+public class AuthController : ApiController
 {
     private readonly ISender _mediator;
     private readonly IMapper _mapper;
 
-    public AuthenticationController(ISender mediator, IMapper mapper)
+    public AuthController(ISender mediator, IMapper mapper)
     {
         _mediator = mediator;
         _mapper = mapper;
@@ -28,10 +28,10 @@ public class AuthenticationController : ApiController
     public async Task<IActionResult> RegisterAsync(RegisterRequest request)
     {
         var command = _mapper.Map<RegisterCommand>(request);
-        ErrorOr<AuthenticationResult> authResult = await _mediator.Send(command);
+        ErrorOr<AuthResult> authResult = await _mediator.Send(command);
 
         return authResult.Match(
-            authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
+            authResult => Ok(_mapper.Map<AuthResponse>(authResult)),
             errors => Problem(errors));
     }
 
@@ -39,9 +39,9 @@ public class AuthenticationController : ApiController
     public async Task<IActionResult> LoginAsync(LoginRequest request)
     {
         var query = _mapper.Map<LoginQuery>(request);
-        ErrorOr<AuthenticationResult> authResult = await _mediator.Send(query);
+        ErrorOr<AuthResult> authResult = await _mediator.Send(query);
 
-        if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
+        if (authResult.IsError && authResult.FirstError == Errors.Auth.InvalidCredentials)
         {
             return Problem(
                 statusCode: StatusCodes.Status401Unauthorized,
@@ -49,7 +49,7 @@ public class AuthenticationController : ApiController
         }
 
         return authResult.Match(
-            authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
+            authResult => Ok(_mapper.Map<AuthResponse>(authResult)),
             errors => Problem(errors));
     }
 }

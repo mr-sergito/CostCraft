@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace CostCraft.Application.Authentication.Commands.Register;
+namespace CostCraft.Application.Auth.Commands.Register;
 
 public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
 {

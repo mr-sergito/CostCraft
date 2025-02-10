@@ -1,6 +1,6 @@
 ﻿using CostCraft.Domain.UserAggregate;
 
-namespace CostCraft.Application.Common.Interfaces.Authentication;
+namespace CostCraft.Application.Common.Interfaces.Auth;
 
 public interface IJwtTokenGenerator
 {

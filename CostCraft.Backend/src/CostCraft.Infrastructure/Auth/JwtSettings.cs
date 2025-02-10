@@ -1,4 +1,4 @@
-﻿namespace CostCraft.Infrastructure.Authentication;
+﻿namespace CostCraft.Infrastructure.Auth;
 
 public class JwtSettings
 {

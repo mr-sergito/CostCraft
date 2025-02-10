@@ -1,13 +1,13 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using CostCraft.Application.Common.Interfaces.Authentication;
+using CostCraft.Application.Common.Interfaces.Auth;
 using CostCraft.Application.Common.Interfaces.Services;
 using CostCraft.Domain.UserAggregate;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace CostCraft.Infrastructure.Authentication;
+namespace CostCraft.Infrastructure.Auth;
 
 public class JwtTokenGenerator : IJwtTokenGenerator
 {

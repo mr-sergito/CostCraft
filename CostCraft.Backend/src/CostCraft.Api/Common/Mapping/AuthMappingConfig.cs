@@ -1,12 +1,12 @@
-﻿using CostCraft.Application.Authentication.Commands.Register;
-using CostCraft.Application.Authentication.Common;
-using CostCraft.Application.Authentication.Queries.Login;
-using CostCraft.Contracts.Authentication;
+﻿using CostCraft.Application.Auth.Commands.Register;
+using CostCraft.Application.Auth.Common;
+using CostCraft.Application.Auth.Queries.Login;
+using CostCraft.Contracts.Auth;
 using Mapster;
 
 namespace CostCraft.Api.Common.Mapping;
 
-public class AuthenticationMappingConfig : IRegister
+public class AuthMappingConfig : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {
@@ -14,7 +14,7 @@ public class AuthenticationMappingConfig : IRegister
 
         config.NewConfig<LoginRequest, LoginQuery>();
 
-        config.NewConfig<AuthenticationResult, AuthenticationResponse>()
+        config.NewConfig<AuthResult, AuthResponse>()
             .Map(dest => dest.Id, src => src.User.Id.Value)
             .Map(dest => dest.UserName, src => src.User.UserName)
             .Map(dest => dest.Token, src => src.Token);

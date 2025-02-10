@@ -1,8 +1,8 @@
 ﻿using System.Text;
-using CostCraft.Application.Common.Interfaces.Authentication;
+using CostCraft.Application.Common.Interfaces.Auth;
 using CostCraft.Application.Common.Interfaces.Persistence;
 using CostCraft.Application.Common.Interfaces.Services;
-using CostCraft.Infrastructure.Authentication;
+using CostCraft.Infrastructure.Auth;
 using CostCraft.Infrastructure.Persistence;
 using CostCraft.Infrastructure.Persistence.Repositories;
 using CostCraft.Infrastructure.Services;
@@ -20,7 +20,7 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
     {
         services.AddPersistence(configuration)
-                .AddCustomAuthentication(configuration);
+                .AddAuth(configuration);
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         return services;
@@ -37,7 +37,7 @@ public static class DependencyInjection
         return services;
     }
 
-    public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, ConfigurationManager configuration)
+    public static IServiceCollection AddAuth(this IServiceCollection services, ConfigurationManager configuration)
     {
         var jwtSettings = new JwtSettings();
         configuration.Bind(JwtSettings.SectionName, jwtSettings);

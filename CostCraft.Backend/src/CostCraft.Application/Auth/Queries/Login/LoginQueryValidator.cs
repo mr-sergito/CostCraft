@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace CostCraft.Application.Authentication.Queries.Login;
+namespace CostCraft.Application.Auth.Queries.Login;
 
 public class LoginQueryValidator : AbstractValidator<LoginQuery>
 {

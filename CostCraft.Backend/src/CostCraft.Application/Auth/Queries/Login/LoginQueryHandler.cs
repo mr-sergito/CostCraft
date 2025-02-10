@@ -1,15 +1,15 @@
-﻿using CostCraft.Application.Authentication.Common;
-using CostCraft.Application.Common.Interfaces.Authentication;
+﻿using CostCraft.Application.Auth.Common;
+using CostCraft.Application.Common.Interfaces.Auth;
 using CostCraft.Application.Common.Interfaces.Persistence;
 using CostCraft.Domain.Common.Errors;
 using CostCraft.Domain.UserAggregate;
 using ErrorOr;
 using MediatR;
 
-namespace CostCraft.Application.Authentication.Queries.Login;
+namespace CostCraft.Application.Auth.Queries.Login;
 
 public class LoginQueryHandler :
-    IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
+    IRequestHandler<LoginQuery, ErrorOr<AuthResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
@@ -22,25 +22,25 @@ public class LoginQueryHandler :
         _userRepository = userRepository;
     }
 
-    public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
+    public async Task<ErrorOr<AuthResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
 
         // Validate the user exists
         if (_userRepository.GetUserByUserName(query.UserName) is not User user)
         {
-            return new[] { Errors.Authentication.InvalidCredentials };
+            return new[] { Errors.Auth.InvalidCredentials };
         }
 
         // Validate the password is correct
         if (user.Password != query.Password)
         {
-            return new[] { Errors.Authentication.InvalidCredentials };
+            return new[] { Errors.Auth.InvalidCredentials };
         }
 
         // Create JWT token
         var token = _jwtTokenGenerator.GenerateToken(user);
 
-        return new AuthenticationResult(user, token);
+        return new AuthResult(user, token);
     }
 }

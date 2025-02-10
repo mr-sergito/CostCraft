@@ -1,4 +1,4 @@
-﻿namespace CostCraft.Contracts.Authentication;
+﻿namespace CostCraft.Contracts.Auth;
 
 public record LoginRequest(
     string UserName,
